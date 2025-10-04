@@ -3464,6 +3464,38 @@ html {
     position: relative;
   }
 
+  /* Desktop-specific improvements for component content */
+  @media (min-width: 1024px) {
+    /* Better spacing for the main component layout */
+    .component-showcase .flex-1 {
+      padding: 0 2rem 0 0;
+      max-width: 500px;
+    }
+
+    /* Ensure proper spacing from edges */
+    .component-showcase .flex:not(.component-features-list) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Component text content spacing */
+    .component-title {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .component-description {
+      margin-left: 0;
+      padding-left: 0;
+      max-width: 480px;
+    }
+
+    .component-features {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
   .component-title {
     font-family: var(--font-display);
     font-size: 2rem;
