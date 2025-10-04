@@ -651,18 +651,7 @@ html {
     justify-items: center !important;
   }
 
-  /* Product page mobile spacing for larger mobile screens */
-  .text-center.lg\\:text-left {
-    padding: 1.5rem !important;
-    text-align: center !important;
-  }
-
-  .flex.flex-col.lg\\:flex-row.items-center.justify-center {
-    gap: 2rem !important;
-    padding: 2rem 1rem !important;
-    flex-direction: column !important;
-    align-items: center !important;
-  }
+  /* Product page mobile spacing for larger mobile screens - removed problematic selectors */
 }
 
 /* Mobile-First Responsive Design */
@@ -695,38 +684,7 @@ html {
     overflow-x: hidden !important;
   }
 
-  /* Product page specific mobile improvements */
-  .text-center.lg\\:text-left {
-    padding: 1rem !important;
-    margin: 0 auto !important;
-    text-align: center !important;
-  }
-
-  /* Better spacing for product text elements */
-  .text-4xl.lg\\:text-5xl {
-    font-size: 2.5rem !important;
-    text-align: center !important;
-    padding: 1rem 0.5rem !important;
-    margin: 0 auto !important;
-    line-height: 1.2 !important;
-  }
-
-  /* Product page layout improvements */
-  .flex.flex-col.lg\\:flex-row.items-center.justify-center {
-    gap: 2rem !important;
-    padding: 2rem 0 !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  /* Image container spacing */
-  .relative.flex-shrink-0 {
-    margin: 1rem 0 !important;
-    padding: 0 1rem !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
+  /* Product page mobile improvements - removed problematic CSS selectors */
 
   /* Timeline mobile fixes */
   .timeline-line {
@@ -1014,16 +972,7 @@ html {
   }
 
   /* Product page hero mobile */
-  .flex.flex-col.lg\\:flex-row.items-center.justify-center {
-    gap: 2rem !important;
-    padding: 2rem 0 !important;
-  }
-
-  /* Product page "Unique" text mobile */
-  .text-4xl.lg\\:text-5xl {
-    font-size: 2.5rem !important;
-    text-align: center !important;
-  }
+  /* Removed problematic CSS selectors - replaced with class-based approach */
 
   /* Better mobile margins and padding */
   .max-w-6xl,
@@ -1705,19 +1654,7 @@ html {
       line-height: 1.6 !important;
     }
 
-    /* Event buttons */
-    .flex-col.sm\\:flex-row {
-      flex-direction: column !important;
-      gap: 1rem !important;
-      align-items: stretch !important;
-    }
-
-    .flex-col.sm\\:flex-row .btn-primary,
-    .flex-col.sm\\:flex-row .btn-ghost {
-      width: 100%;
-      text-align: center;
-      justify-content: center;
-    }
+    /* Event buttons - removed problematic selectors */
 
     /* Event badges and info */
     .px-4.py-2 {
@@ -1732,19 +1669,12 @@ html {
     }
 
     /* Event meta info */
-    .text-white\\/70 {
+    .text-white\\{
       font-size: 0.875rem !important;
       text-align: center !important;
     }
 
-    /* Order adjustments for mobile */
-    .order-2.md\\:order-1 {
-      order: 1 !important;
-    }
-
-    .order-1.md\\:order-2 {
-      order: 2 !important;
-    }
+    /* Order adjustments for mobile - removed problematic selectors */
   }
 
   /* Mobile General Layout Improvements */
@@ -1873,7 +1803,7 @@ html {
   /* Freeman Poster Gallery Mobile Optimizations */
   @media (max-width: 767px) {
     /* Ensure poster gallery works well on mobile */
-    .relative.aspect-\\[3\\/4\\] {
+    .relative[class*="aspect-"] {
       margin-bottom: 3rem !important;
     }
 
@@ -3758,8 +3688,7 @@ html {
     }
 
     /* Better component layout on mobile */
-    .flex.flex-col.lg\\:flex-row,
-    .flex.flex-col.lg\\:flex-row-reverse {
+    .component-showcase > div:first-child {
       flex-direction: column !important;
       gap: 1.5rem !important;
     }
@@ -3770,6 +3699,44 @@ html {
       width: 100% !important;
       display: flex !important;
       justify-content: center !important;
+    }
+
+    /* Product page specific mobile improvements */
+    .component-title,
+    .component-description,
+    .component-features-title,
+    .component-feature-text {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    /* Better spacing for component content on mobile */
+    .component-showcase {
+      padding: 1.5rem !important;
+      margin: 0 !important;
+    }
+
+    /* Prevent text from sticking to edges */
+    .component-showcase > div:first-child > div:first-child {
+      padding: 0 1rem !important;
+    }
+
+    /* Fix homepage hero images - ensure no gaps on mobile */
+    section.relative.overflow-hidden {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100vw !important;
+      left: 50% !important;
+      right: 50% !important;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+    }
+
+    /* Ensure hero image containers are full width */
+    div.relative.w-full {
+      width: 100vw !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
   }
 
