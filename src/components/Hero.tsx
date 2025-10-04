@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <h1 className="hero-text">
               <span className="hero-gradient hero-floating">
-                Bike the World
+                Enter the Space
               </span>
             </h1>
           </div>

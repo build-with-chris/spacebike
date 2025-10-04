@@ -16,156 +16,176 @@ interface TimelineEvent {
 
 const visionEvents: TimelineEvent[] = [
   {
-    id: "inception",
-    year: "2016",
-    title: "Bernis Vision entsteht",
-    subtitle: "Der Traum von der ultimativen Weltreise",
-    description: "Alles begann mit Bernis verrückter Idee: Was wäre, wenn man mit einem einzigen Fahrrad die ganze Welt bereisen könnte - autark und vollständig ausgestattet?",
+    id: "first-adventure",
+    year: "2022",
+    title: "Die ersten Kilometer",
+    subtitle: "Mut zum Abenteuer",
+    description: "Berni startet seine ersten mehrtägigen Touren mit dem Spacebike. Erste Erfahrungen zeigen sowohl die Möglichkeiten als auch die Herausforderungen auf.",
     details: [
-      "Erste Skizzen auf einer Serviette in einem Café in Berlin",
-      "Inspiration durch eigene Radreisen in Europa",
-      "Vision: Ein Bike als komplettes mobiles Zuhause",
-      "Suche nach Gleichgesinnten und ersten Unterstützern"
+      "Erste 3-Tage-Tour durch die Alpen",
+      "Übernachtung in freier Natur getestet",
+      "Modulares System in der Praxis erprobt",
+      "Erste Nacht unter dem Sternenhimmel"
     ],
     achievements: [
-      "Konzeptentwicklung",
-      "Team-Formation",
-      "Erste Finanzierung"
+      "450 km zurückgelegt",
+      "12 Nächte im Freien",
+      "Grundkonzept bestätigt"
     ],
     featured: true
   },
   {
-    id: "research",
-    year: "2017",
-    title: "Forschung & Entwicklung",
-    subtitle: "Die Technik hinter der Vision",
-    description: "Intensive Forschungsphase zu Materialwissenschaften, Mechanik und den Bedürfnissen von Langstrecken-Radreisenden.",
+    id: "learning-year",
+    year: "2023",
+    title: "Jahr des Lernens",
+    subtitle: "Erfahrungen sammeln und optimieren",
+    description: "Längere Touren bringen wertvolle Erkenntnisse. Das Setup wird kontinuierlich verbessert und an die praktischen Bedürfnisse angepasst.",
     details: [
-      "Partnerschaften mit Hochschulen für Ingenieurswesen",
-      "Tests mit erfahrenen Weltradlern",
-      "Entwicklung modularer Systeme",
-      "Erste Prototyp-Komponenten für Tisch und Bett"
+      "Mehrere 1-2 Wochen Touren durch Europa",
+      "Tests bei verschiedenen Wetterbedingungen",
+      "Optimierung der Tisch- und Bett-Module",
+      "Erste internationale Erfahrungen"
     ],
     achievements: [
-      "Materialforschung",
-      "Mechanische Grundlagen",
-      "Erste funktionsfähige Module"
+      "1.200 km gefahren",
+      "28 Übernachtungen",
+      "Setup optimiert"
     ]
+  },
+  {
+    id: "breakthrough-year",
+    year: "2024",
+    title: "Das Durchbruchs-Jahr",
+    subtitle: "Längere Distanzen, größere Träume",
+    description: "Bernis längste Tour bisher - einen ganzen Monat unterwegs. Das Spacebike beweist seine Alltagstauglichkeit für längere Reisen.",
+    details: [
+      "30-Tage-Tour durch Skandinavien",
+      "Komplette Autarkie getestet",
+      "Wetterextreme gemeistert",
+      "Lokale Begegnungen und Geschichten"
+    ],
+    achievements: [
+      "1.500 km in einem Monat",
+      "30 Nächte am Stück",
+      "Langzeittauglichkeit bewiesen"
+    ],
+    featured: true
   }
 ];
 
 const buildEvents: TimelineEvent[] = [
   {
-    id: "prototype1",
-    year: "2018",
-    title: "Erster Prototyp",
-    subtitle: "Spacebike Alpha",
-    description: "Der erste funktionsfähige Prototyp wird gebaut und auf einer 2000km Testfahrt durch Europa erprobt.",
-    details: [
-      "Bau des Alpha-Prototyps in der Werkstatt in München",
-      "Tests auf verschiedenen Untergründen",
-      "Erste erfolgreiche Testfahrt: München-Rom",
-      "Identifikation von Verbesserungspotential bei Modulwechsel"
-    ],
-    achievements: [
-      "Funktionsfähiger Prototyp",
-      "2000km Testfahrt",
-      "Proof of Concept"
-    ],
-    featured: true
-  },
-  {
-    id: "challenges",
-    year: "2019",
-    title: "Herausforderungen",
-    subtitle: "Rückschläge & Learnings",
-    description: "Nicht alles lief nach Plan. Wichtige Lektionen aus der Praxis wurden gelernt.",
-    details: [
-      "Materialversagen bei extremer Hitze in Südspanien",
-      "Probleme beim schnellen Modulwechsel",
-      "Zurück zum Reißbrett",
-      "Interviews mit 200+ Langstrecken-Radfahrern"
-    ],
-    achievements: [
-      "Wertvolle Praxiserkenntnisse",
-      "Verbessertes Design",
-      "Stärkeres Team"
-    ]
-  },
-  {
-    id: "breakthrough",
+    id: "studies-start",
     year: "2020",
-    title: "Der Durchbruch",
-    subtitle: "Innovative Lösung",
-    description: "Die entscheidende Innovation: Das patentierte Schnellverbindungssystem wird entwickelt.",
+    title: "Der Beginn",
+    subtitle: "Produktentwicklung studieren",
+    description: "Berni beginnt sein Produktentwicklungs-Studium und startet parallel seine verrückte Idee: Ein Fahrrad, das alles kann.",
     details: [
-      "Entwicklung des Quick-Connect Systems",
-      "Revolutionäres Modul-Wechselsystem",
-      "Tests mit Extremsportlern",
-      "Patent-Anmeldungen eingereicht"
+      "Einschreibung im Produktentwicklungs-Studium",
+      "Erste Skizzen und Konzepte für das modulare System",
+      "Recherche zu bestehenden Fahrrad-Camping-Lösungen",
+      "Vision: Tisch, Bett und Küche am Fahrrad"
     ],
     achievements: [
-      "Technischer Durchbruch",
-      "Patent erhalten",
-      "Extremsport-Kooperationen"
+      "Studium begonnen",
+      "Grundidee entwickelt",
+      "Erste Konzepte"
     ],
     featured: true
   },
   {
-    id: "prototype2",
+    id: "development-hustle",
     year: "2021",
-    title: "Zweiter Prototyp",
-    subtitle: "Spacebike Beta",
-    description: "Mit den neuen Erkenntnissen wird der Beta-Prototyp entwickelt und auf Transozeantour getestet.",
+    title: "Hustling Phase",
+    subtitle: "Designen, entwickeln, bauen",
+    description: "Berni arbeitet wie verrückt an der Entwicklung der einzelnen Komponenten. Jede freie Minute wird in das Projekt investiert.",
     details: [
-      "Integration aller neuen Technologien",
-      "Umfangreiche Langzeittests",
-      "Erste Tests auf 6-monatiger Afrika-Tour",
-      "Medienaufmerksamkeit weltweit"
+      "Tisch-Modul: Vom Konzept zum funktionsfähigen Prototyp",
+      "Bett-System: Ergonomie und Komfort optimieren",
+      "Küchen-Komponente: Kochstation integrieren",
+      "Endlose Nächte in der Werkstatt"
     ],
     achievements: [
-      "Erfolgreiche 6-Monats-Tour",
-      "Internationale Anerkennung",
-      "Mediale Aufmerksamkeit"
+      "Alle Module entworfen",
+      "Erste Prototypen gebaut",
+      "System integriert"
     ]
+  },
+  {
+    id: "final-setup",
+    year: "2022",
+    title: "Finalisierung",
+    subtitle: "Das Spacebike wird real",
+    description: "Die letzten Optimierungen werden vorgenommen. Das Spacebike ist bereit für die ersten echten Abenteuer.",
+    details: [
+      "Finale Gewichtsoptimierung aller Komponenten",
+      "Stabilität und Sicherheit getestet",
+      "Erste kurze Testfahrten erfolgreich",
+      "Das Spacebike ist einsatzbereit"
+    ],
+    achievements: [
+      "Finales Design",
+      "Alle Tests bestanden",
+      "Bereit für Abenteuer"
+    ],
+    featured: true
   }
 ];
 
 const experienceEvents: TimelineEvent[] = [
   {
-    id: "refinement",
-    year: "2022",
-    title: "Perfektion",
-    subtitle: "Feinschliff & Details",
-    description: "Das finale Jahr der Entwicklung mit letzten Verbesserungen und Vorbereitung der Serienfertigung.",
+    id: "current-preparation",
+    year: "2025",
+    title: "Vorbereitung der großen Reise",
+    subtitle: "Das Setup perfektionieren",
+    description: "Berni nutzt seine Erfahrungen aus 3+ Jahren, um sich optimal auf die große Weltreise vorzubereiten. Jedes Detail wird durchdacht.",
     details: [
-      "Optimierung aller Modulsysteme",
-      "Langzeittests über 50.000km abgeschlossen",
-      "Produktionspartner gefunden",
-      "CE-Zertifizierung erhalten"
+      "Optimierung basierend auf 100+ Übernachtungen",
+      "Routen-Planung für die Weltreise",
+      "Internationale Dokumente und Vorbereitungen",
+      "Equipment-Tests für verschiedene Klimazonen"
     ],
     achievements: [
-      "Alle Tests bestanden",
-      "Produktionsreife",
-      "Sicherheitszertifikate"
+      "Setup perfektioniert",
+      "Route geplant",
+      "Bereit für die Welt"
     ]
   },
   {
-    id: "completion",
-    year: "2023",
-    title: "Fertigstellung",
-    subtitle: "Spacebike Gamma - Mission Complete",
-    description: "Das dritte und finale Spacebike ist fertig. Bernis Traum wird Realität.",
+    id: "world-journey-start",
+    year: "2026",
+    title: "Der Start",
+    subtitle: "Die große Weltreise beginnt",
+    description: "Berni startet seine Traum-Weltreise. Mit dem perfektionierten Spacebike wird er die Welt erkunden, wie nie zuvor.",
     details: [
-      "Fertigstellung des Gamma-Modells",
-      "Erste kommerzielle Produktion gestartet",
-      "Auslieferung an Abenteurer weltweit",
-      "Beginn einer neuen Ära des Radreisens"
+      "Start der mehrjährigen Weltreise",
+      "Erste Etappe durch Europa",
+      "Richtung Asien und unbekannte Abenteuer",
+      "Live-Updates und Geschichten unterwegs"
     ],
     achievements: [
-      "Produktionsstart",
-      "100 erste Bikes ausgeliefert",
-      "Bernis Vision verwirklicht"
+      "Weltreise gestartet",
+      "Träume werden real",
+      "Das Abenteuer beginnt"
+    ],
+    featured: true
+  },
+  {
+    id: "infinite-dreams",
+    year: "∞",
+    title: "Endlose Möglichkeiten",
+    subtitle: "Die Reise geht weiter",
+    description: "Nach der ersten großen Weltreise ist klar: Das Spacebike eröffnet unendliche Möglichkeiten für Abenteuer und Entdeckungen.",
+    details: [
+      "Kontinentübergreifende Expeditionen",
+      "Neue Routen und unentdeckte Orte",
+      "Community von Spacebike-Abenteurern",
+      "Die Reise hört nie auf"
+    ],
+    achievements: [
+      "Unendliche Abenteuer",
+      "Grenzenlose Freiheit",
+      "Träume ohne Limit"
     ],
     featured: true
   }
@@ -202,24 +222,24 @@ export default function HistoryPage() {
       <div className="journey-hero">
         <div className="container mx-auto px-6 py-24 text-center">
           <h1 className="journey-title">
-            Die Geschichte des <span className="journey-title-highlight">Spacebikes</span>
+            Bernis <span className="journey-title-highlight">Spacebike</span> Abenteuer
           </h1>
           <p className="journey-subtitle">
-            Von der ersten Idee bis zur Realität - Entdecke die faszinierende
-            Entwicklungsreise unserer revolutionären Technologie
+            Eine bereits begonnene Reise - Die ersten Tausend Kilometer sind geschafft,
+            die große Weltreise liegt noch vor uns
           </p>
           <div className="journey-stats">
             <div className="journey-stat">
-              <span className="journey-stat-number">8</span>
-              <span className="journey-stat-label">Jahre</span>
+              <span className="journey-stat-number">3.2k+</span>
+              <span className="journey-stat-label">Kilometer</span>
             </div>
             <div className="journey-stat">
-              <span className="journey-stat-number">4</span>
-              <span className="journey-stat-label">Prototypen</span>
+              <span className="journey-stat-number">100+</span>
+              <span className="journey-stat-label">Nächte</span>
             </div>
             <div className="journey-stat">
-              <span className="journey-stat-number">1</span>
-              <span className="journey-stat-label">Vision</span>
+              <span className="journey-stat-number">∞</span>
+              <span className="journey-stat-label">Träume</span>
             </div>
           </div>
         </div>
@@ -233,30 +253,30 @@ export default function HistoryPage() {
               onClick={() => setActiveSection('vision')}
               className={`journey-nav-tab-main ${activeSection === 'vision' ? 'journey-nav-tab-active' : ''}`}
             >
-              <div className="journey-nav-tab-icon">💡</div>
+              <div className="journey-nav-tab-icon">📚</div>
               <div className="journey-nav-tab-content">
-                <h3>The Vision</h3>
-                <p>Wo alles begann</p>
+                <h3>Die Vergangenheit</h3>
+                <p>2022-2025: Erste Abenteuer</p>
               </div>
             </button>
             <button
               onClick={() => setActiveSection('build')}
               className={`journey-nav-tab-main ${activeSection === 'build' ? 'journey-nav-tab-active' : ''}`}
             >
-              <div className="journey-nav-tab-icon">🔧</div>
+              <div className="journey-nav-tab-icon">🚴‍♂️</div>
               <div className="journey-nav-tab-content">
-                <h3>The Build</h3>
-                <p>Entwicklung & Prototypen</p>
+                <h3>Die Gegenwart</h3>
+                <p>2025: Vorbereitung & Setup</p>
               </div>
             </button>
             <button
               onClick={() => setActiveSection('experience')}
               className={`journey-nav-tab-main ${activeSection === 'experience' ? 'journey-nav-tab-active' : ''}`}
             >
-              <div className="journey-nav-tab-icon">🚀</div>
+              <div className="journey-nav-tab-icon">🌍</div>
               <div className="journey-nav-tab-content">
-                <h3>The Experience</h3>
-                <p>Fertigstellung & Zukunft</p>
+                <h3>Die Zukunft</h3>
+                <p>2026+: Die große Weltreise</p>
               </div>
             </button>
           </div>
