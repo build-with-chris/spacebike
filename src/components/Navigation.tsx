@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavigationProps {
   currentPage?: 'home' | 'history' | 'product' | 'journey';
@@ -69,6 +70,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
           >
             Journey
           </Link>
+          <ThemeToggle />
         </div>
 
         <button
@@ -116,6 +118,9 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
             >
               Journey
             </Link>
+            <div className="nav-mobile-theme">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       )}

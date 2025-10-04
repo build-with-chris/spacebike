@@ -1,7 +1,6 @@
 "use client";
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
-import Image from 'next/image';
 
 interface Component {
   id: string;
@@ -12,545 +11,272 @@ interface Component {
   image?: string;
 }
 
-const components: Component[] = [
+const designComponents: Component[] = [
   {
     id: "frame",
     name: "Titan-Carbon Rahmen",
-    description: "Der Herzstück des Spacebikes - ein ultraleichter Rahmen aus Titan-Carbon-Verbundwerkstoff, speziell für die extremen Bedingungen des Weltraums entwickelt.",
+    description: "Das Herzstück des Spacebikes - ein ultraleichter Rahmen aus Titan-Carbon-Verbundwerkstoff, speziell für die extremen Bedingungen des Weltraums entwickelt.",
     features: [
       "Gewicht: nur 800g",
       "Temperaturbeständig: -200°C bis +200°C",
-      "Mikrometeoriten-resistent",
-      "Integrierte Lebenserhaltungssysteme"
+      "Vakuum-optimierte Konstruktion",
+      "Modulares Design für einfache Wartung"
     ],
     specs: [
-      "Material: Titan-Carbon-Hybrid",
-      "Abmessungen: 180cm × 65cm × 40cm",
-      "Belastbarkeit: bis 150kg"
-    ]
-  },
-  {
-    id: "wheels",
-    name: "Magneto-Räder",
-    description: "Revolutionäre magnetische Räder, die ohne physischen Kontakt funktionieren. Perfekte Rotation in der Schwerelosigkeit durch elektromagnetische Stabilisierung.",
-    features: [
-      "Kontaktlose Rotation",
-      "Selbststabilisierend",
-      "Keine Abnutzung",
-      "360° Bewegungsfreiheit"
-    ],
-    specs: [
-      "Durchmesser: 60cm",
-      "Magnetfeldstärke: 0.5 Tesla",
-      "Energieverbrauch: 12W pro Rad"
-    ]
-  },
-  {
-    id: "drive",
-    name: "Ionic Drive System",
-    description: "Das revolutionäre Antriebssystem nutzt Ionenstrahlen für präzise Bewegungen im Weltraum. Geräuschlos und hocheffizient.",
-    features: [
-      "Ionenantrieb-Technologie",
-      "Präzise Richtungssteuerung",
-      "Geräuschloser Betrieb",
-      "Extrem energieeffizient"
-    ],
-    specs: [
-      "Schubkraft: 0.1-5 Newton",
-      "Treibstoff: Xenon-Gas",
-      "Betriebszeit: 72 Stunden"
+      "Material: Titan-Carbon Composite",
+      "Rahmengeometrie: Angepasst für Schwerelosigkeit",
+      "Verbindungen: Magnetische Kupplungen"
     ]
   },
   {
     id: "cockpit",
     name: "Smart Cockpit",
-    description: "Ein intelligentes Kontrollzentrum mit holographischer Anzeige und KI-gestützter Navigation für optimale Sicherheit im Weltraum.",
+    description: "Intuitives Kontrollzentrum mit holographischen Displays und direkter Verbindung zum Raumanzug.",
     features: [
-      "Holographisches Display",
-      "KI-Navigation",
-      "Lebenserhaltungs-Monitor",
-      "Notfall-Kommunikation"
+      "360° Holographische Anzeigen",
+      "Gedankensteuerung via Neural Interface",
+      "Automatische Notfallsysteme",
+      "Integrierte KI-Assistenz"
     ],
     specs: [
-      "Display: 15\" Hologramm",
-      "Prozessor: Quantum-Chip",
-      "Reichweite: 1000km"
+      "Display: Holographische Projektionen",
+      "Interface: Neural + Haptik",
+      "KI: Adaptive Lernalgorithmen"
+    ]
+  }
+];
+
+const performanceComponents: Component[] = [
+  {
+    id: "wheels",
+    name: "Magneto-Wheels",
+    description: "Revolutionäre magnetische Räder, die sowohl auf metallischen Oberflächen als auch im freien Raum funktionieren.",
+    features: [
+      "Magnetische Haftung auf Metall",
+      "Ionenantrieb für freien Raum",
+      "Adaptive Griffmuster",
+      "Selbstreinigende Oberfläche"
+    ],
+    specs: [
+      "Durchmesser: 45cm",
+      "Magnetfeldstärke: 2.5 Tesla",
+      "Ionenantrieb: 500N Schub"
     ]
   },
   {
-    id: "suit",
-    name: "Spacebike Suit Integration",
-    description: "Speziell entwickelte Anzug-Integration, die Fahrer und Bike zu einer Einheit verbindet. Optimale Kontrolle und Sicherheit.",
+    id: "drive",
+    name: "Ionic Drive System",
+    description: "Hocheffizientes Antriebssystem mit Ionentriebwerken für präzise Manöver in der Schwerelosigkeit.",
     features: [
-      "Nahtlose Bike-Integration",
-      "Biomonitoring",
-      "Adaptive Temperaturregelung",
-      "Notfall-Trennsystem"
+      "Xenon-Ionentriebwerke",
+      "Vektorielle Schubsteuerung",
+      "Energieeffizienz: 95%",
+      "Lautloser Betrieb"
     ],
     specs: [
-      "Material: Smart-Fabric",
-      "Betriebstemperatur: -180°C bis +120°C",
-      "Lebenserhaltung: 8 Stunden"
+      "Treibstoff: Xenon",
+      "Spezifischer Impuls: 3000s",
+      "Schubbereich: 1mN - 1N"
+    ]
+  }
+];
+
+const connectionComponents: Component[] = [
+  {
+    id: "suit",
+    name: "Suit Integration",
+    description: "Nahtlose Integration mit allen gängigen Raumanzügen für maximale Sicherheit und Komfort.",
+    features: [
+      "Universelle Anzug-Kompatibilität",
+      "Lebenserhaltungssystem-Anbindung",
+      "Notfall-Trennsystem",
+      "Biometrische Überwachung"
+    ],
+    specs: [
+      "Kompatibilität: EMU, Orlan, xEMU",
+      "Trennzeit: <0.5 Sekunden",
+      "Überwachung: Herzrate, O2, CO2"
     ]
   }
 ];
 
 export default function ProductPage() {
+  const [activeSection, setActiveSection] = useState<'design' | 'performance' | 'connection'>('design');
   const [selectedComponent, setSelectedComponent] = useState<string | null>(null);
 
+  const getCurrentComponents = () => {
+    switch (activeSection) {
+      case 'design': return designComponents;
+      case 'performance': return performanceComponents;
+      case 'connection': return connectionComponents;
+      default: return designComponents;
+    }
+  };
+
   return (
-    <main style={{ backgroundColor: '#fefefe', minHeight: '100vh' }}>
+    <main className="min-h-screen" style={{background: 'var(--bg-primary)'}}>
       <Navigation currentPage="product" />
 
-      {/* Hero Section - Clean & Minimal */}
-      <section style={{
-        backgroundColor: '#ffffff',
-        padding: '8rem 2rem 6rem',
-        textAlign: 'center',
-        borderBottom: '1px solid #f0f0f0'
-      }}>
-        <div className="container mx-auto max-w-6xl">
-          <h1 style={{
-            fontSize: 'clamp(3rem, 8vw, 6rem)',
-            fontWeight: '200',
-            fontFamily: 'var(--font-display)',
-            color: '#1a1a1a',
-            marginBottom: '2rem',
-            letterSpacing: '-0.02em'
-          }}>
-            Das Spacebike
+      {/* Hero Section */}
+      <div className="journey-hero">
+        <div className="container mx-auto px-6 py-24 text-center">
+          <h1 className="journey-title">
+            Das <span className="journey-title-highlight">Spacebike</span> Produktdesign
           </h1>
-          <p style={{
-            fontSize: '1.5rem',
-            color: '#666',
-            lineHeight: '1.5',
-            maxWidth: '800px',
-            margin: '0 auto 4rem',
-            fontWeight: '300'
-          }}>
-            Revolutionäre Mobilität für die Zukunft der Raumfahrt
+          <p className="journey-subtitle">
+            Entdecke die innovativen Komponenten und bahnbrechende Technologie,
+            die das Spacebike zum ultimativen Weltraum-Fahrzeug machen
           </p>
-
-          {/* Main Product Image Placeholder */}
-          <div style={{
-            width: '100%',
-            maxWidth: '900px',
-            height: '500px',
-            backgroundColor: '#f8f8f8',
-            borderRadius: '20px',
-            margin: '0 auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid #e8e8e8'
-          }}>
-            <div style={{
-              textAlign: 'center',
-              color: '#999'
-            }}>
-              <div style={{
-                fontSize: '4rem',
-                marginBottom: '1rem'
-              }}>🚴‍♂️</div>
-              <p style={{ fontSize: '1.2rem', fontWeight: '300' }}>
-                Spacebike Gamma - Hero Image
-              </p>
+          <div className="journey-stats">
+            <div className="journey-stat">
+              <span className="journey-stat-number">800g</span>
+              <span className="journey-stat-label">Gesamtgewicht</span>
+            </div>
+            <div className="journey-stat">
+              <span className="journey-stat-number">5</span>
+              <span className="journey-stat-label">Hauptkomponenten</span>
+            </div>
+            <div className="journey-stat">
+              <span className="journey-stat-number">∞</span>
+              <span className="journey-stat-label">Möglichkeiten</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Concept Overview */}
-      <section style={{
-        backgroundColor: '#fafafa',
-        padding: '6rem 2rem'
-      }}>
-        <div className="container mx-auto max-w-4xl">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '4rem',
-            alignItems: 'center'
-          }} className="md:grid-cols-1">
-            <div>
-              <h2 style={{
-                fontSize: '2.5rem',
-                fontWeight: '300',
-                fontFamily: 'var(--font-display)',
-                color: '#1a1a1a',
-                marginBottom: '2rem'
-              }}>
-                Das Konzept
-              </h2>
-              <p style={{
-                fontSize: '1.1rem',
-                color: '#555',
-                lineHeight: '1.7',
-                marginBottom: '2rem'
-              }}>
-                Das Spacebike revolutioniert die Art, wie wir uns im Weltraum bewegen.
-                Durch innovative Technologien wie magnetische Räder und Ionenantrieb
-                ermöglicht es erstmals intuitive, fahrradähnliche Mobilität in der Schwerelosigkeit.
-              </p>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '2rem',
-                marginTop: '3rem'
-              }}>
-                <div>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    color: '#1a1a1a',
-                    marginBottom: '0.5rem'
-                  }}>
-                    Geschwindigkeit
-                  </h4>
-                  <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                    Bis zu 50 km/h im Weltraum
-                  </p>
-                </div>
-                <div>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    color: '#1a1a1a',
-                    marginBottom: '0.5rem'
-                  }}>
-                    Reichweite
-                  </h4>
-                  <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                    1000km mit einer Ladung
-                  </p>
-                </div>
-                <div>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    color: '#1a1a1a',
-                    marginBottom: '0.5rem'
-                  }}>
-                    Gewicht
-                  </h4>
-                  <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                    Nur 15kg Gesamtgewicht
-                  </p>
-                </div>
-                <div>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    color: '#1a1a1a',
-                    marginBottom: '0.5rem'
-                  }}>
-                    Einsatzzeit
-                  </h4>
-                  <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                    72 Stunden Betriebszeit
-                  </p>
-                </div>
+      {/* Navigation Tabs */}
+      <div className="journey-nav">
+        <div className="container mx-auto px-6">
+          <div className="journey-nav-tabs-centered">
+            <button
+              onClick={() => setActiveSection('design')}
+              className={`journey-nav-tab-main ${activeSection === 'design' ? 'journey-nav-tab-active' : ''}`}
+            >
+              <div className="journey-nav-tab-icon">🎨</div>
+              <div className="journey-nav-tab-content">
+                <h3>Design & Engineering</h3>
+                <p>Form trifft Funktion</p>
               </div>
-            </div>
-            <div style={{
-              width: '100%',
-              height: '400px',
-              backgroundColor: '#f0f0f0',
-              borderRadius: '15px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid #e0e0e0'
-            }}>
-              <div style={{ textAlign: 'center', color: '#999' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
-                <p>Konzept Grafik</p>
+            </button>
+            <button
+              onClick={() => setActiveSection('performance')}
+              className={`journey-nav-tab-main ${activeSection === 'performance' ? 'journey-nav-tab-active' : ''}`}
+            >
+              <div className="journey-nav-tab-icon">⚡</div>
+              <div className="journey-nav-tab-content">
+                <h3>Performance & Innovation</h3>
+                <p>Antrieb & Technologie</p>
               </div>
-            </div>
+            </button>
+            <button
+              onClick={() => setActiveSection('connection')}
+              className={`journey-nav-tab-main ${activeSection === 'connection' ? 'journey-nav-tab-active' : ''}`}
+            >
+              <div className="journey-nav-tab-icon">🔗</div>
+              <div className="journey-nav-tab-content">
+                <h3>Connection & Experience</h3>
+                <p>Integration & Bedienung</p>
+              </div>
+            </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Components Section */}
-      <section style={{
-        backgroundColor: '#ffffff',
-        padding: '6rem 2rem'
-      }}>
-        <div className="container mx-auto max-w-6xl">
-          <div style={{
-            textAlign: 'center',
-            marginBottom: '4rem'
-          }}>
-            <h2 style={{
-              fontSize: '2.5rem',
-              fontWeight: '300',
-              fontFamily: 'var(--font-display)',
-              color: '#1a1a1a',
-              marginBottom: '1rem'
-            }}>
-              Komponenten & Technologie
-            </h2>
-            <p style={{
-              fontSize: '1.1rem',
-              color: '#666',
-              maxWidth: '600px',
-              margin: '0 auto'
-            }}>
-              Jede Komponente wurde für die extremen Anforderungen des Weltraums optimiert
-            </p>
-          </div>
+      {/* Content Sections */}
+      <div className="container mx-auto px-6 pb-20">
+        <div className="journey-section">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {getCurrentComponents().map((component) => (
+                <div
+                  key={component.id}
+                  className="journey-vision-card cursor-pointer transition-all duration-300 hover:shadow-lg"
+                  onClick={() => setSelectedComponent(selectedComponent === component.id ? null : component.id)}
+                >
+                  <h3 className="journey-section-title text-2xl mb-4">{component.name}</h3>
+                  <p className="journey-text mb-6">{component.description}</p>
 
-          {/* Component Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
-          }}>
-            {components.map((component) => (
-              <div
-                key={component.id}
-                style={{
-                  backgroundColor: selectedComponent === component.id ? '#f8f8f8' : '#ffffff',
-                  border: `2px solid ${selectedComponent === component.id ? '#ddd' : '#f0f0f0'}`,
-                  borderRadius: '15px',
-                  padding: '2rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}
-                onClick={() => setSelectedComponent(
-                  selectedComponent === component.id ? null : component.id
-                )}
-                onMouseEnter={(e) => {
-                  if (selectedComponent !== component.id) {
-                    e.currentTarget.style.borderColor = '#e0e0e0';
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedComponent !== component.id) {
-                    e.currentTarget.style.borderColor = '#f0f0f0';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }
-                }}
-              >
-                {/* Component Image Placeholder */}
-                <div style={{
-                  width: '100%',
-                  height: '200px',
-                  backgroundColor: '#f5f5f5',
-                  borderRadius: '10px',
-                  marginBottom: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <div style={{ textAlign: 'center', color: '#999' }}>
-                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⚙️</div>
-                    <p style={{ fontSize: '0.9rem' }}>{component.name}</p>
-                  </div>
-                </div>
-
-                <h3 style={{
-                  fontSize: '1.3rem',
-                  fontWeight: '600',
-                  color: '#1a1a1a',
-                  marginBottom: '1rem'
-                }}>
-                  {component.name}
-                </h3>
-
-                <p style={{
-                  fontSize: '0.95rem',
-                  color: '#666',
-                  lineHeight: '1.6',
-                  marginBottom: '1.5rem'
-                }}>
-                  {component.description}
-                </p>
-
-                {/* Features */}
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <h4 style={{
-                    fontSize: '0.9rem',
-                    fontWeight: '600',
-                    color: '#1a1a1a',
-                    marginBottom: '0.8rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Features
-                  </h4>
-                  <ul style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    margin: 0
-                  }}>
-                    {component.features.map((feature, idx) => (
-                      <li key={idx} style={{
-                        fontSize: '0.9rem',
-                        color: '#555',
-                        marginBottom: '0.5rem',
-                        paddingLeft: '1rem',
-                        position: 'relative'
-                      }}>
-                        <span style={{
-                          position: 'absolute',
-                          left: 0,
-                          color: '#999'
-                        }}>•</span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Expandable Specs */}
-                {selectedComponent === component.id && component.specs && (
-                  <div style={{
-                    borderTop: '1px solid #e0e0e0',
-                    paddingTop: '1.5rem',
-                    animation: 'fadeIn 0.3s ease'
-                  }}>
-                    <h4 style={{
-                      fontSize: '0.9rem',
-                      fontWeight: '600',
-                      color: '#1a1a1a',
-                      marginBottom: '0.8rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
-                    }}>
-                      Technische Daten
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold mb-3" style={{color: 'var(--text-primary)'}}>
+                      Features:
                     </h4>
-                    <ul style={{
-                      listStyle: 'none',
-                      padding: 0,
-                      margin: 0
-                    }}>
-                      {component.specs.map((spec, idx) => (
-                        <li key={idx} style={{
-                          fontSize: '0.9rem',
-                          color: '#555',
-                          marginBottom: '0.5rem',
-                          paddingLeft: '1rem',
-                          position: 'relative'
-                        }}>
-                          <span style={{
-                            position: 'absolute',
-                            left: 0,
-                            color: '#999'
-                          }}>→</span>
-                          {spec}
+                    <ul className="space-y-2">
+                      {component.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-3">
+                          <span className="text-orange-500 font-bold">•</span>
+                          <span className="journey-text text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                )}
 
-                <div style={{
-                  marginTop: '1rem',
-                  fontSize: '0.85rem',
-                  color: '#999',
-                  textAlign: 'center'
-                }}>
-                  {selectedComponent === component.id ? 'Weniger anzeigen' : 'Mehr Details'}
+                  {selectedComponent === component.id && component.specs && (
+                    <div className="mt-6 pt-6 border-t border-gray-200">
+                      <h4 className="text-lg font-semibold mb-3" style={{color: 'var(--text-primary)'}}>
+                        Technische Spezifikationen:
+                      </h4>
+                      <ul className="space-y-2">
+                        {component.specs.map((spec, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-blue-500 font-bold">→</span>
+                            <span className="journey-text text-sm">{spec}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div className="mt-4 text-orange-600 text-sm font-medium">
+                    {selectedComponent === component.id ? 'Weniger anzeigen ↑' : 'Technische Details anzeigen ↓'}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {activeSection === 'design' && (
+              <div className="mt-16 text-center">
+                <div className="journey-vision-card max-w-4xl mx-auto">
+                  <h3 className="journey-section-title">Designphilosophie</h3>
+                  <p className="journey-text">
+                    Jede Komponente des Spacebikes wurde mit dem Grundsatz entwickelt, dass Form der Funktion folgt.
+                    In der extremen Umgebung des Weltraums gibt es keinen Platz für überflüssige Elemente.
+                    Jede Linie, jede Oberfläche und jede Verbindung dient einem spezifischen Zweck und trägt zur
+                    Gesamtleistung des Systems bei.
+                  </p>
                 </div>
               </div>
-            ))}
+            )}
+
+            {activeSection === 'performance' && (
+              <div className="mt-16 text-center">
+                <div className="journey-vision-card max-w-4xl mx-auto">
+                  <h3 className="journey-section-title">Performance-Versprechen</h3>
+                  <p className="journey-text">
+                    Das Spacebike setzt neue Maßstäbe für Leistung und Effizienz im Weltraum.
+                    Mit seinem revolutionären Antriebssystem erreicht es eine bisher unerreichte
+                    Kombination aus Geschwindigkeit, Manövrierfähigkeit und Energieeffizienz.
+                    Jede Komponente wurde optimiert für maximale Performance bei minimalem Energieverbrauch.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {activeSection === 'connection' && (
+              <div className="mt-16 text-center">
+                <div className="journey-vision-card max-w-4xl mx-auto">
+                  <h3 className="journey-section-title">Nahtlose Integration</h3>
+                  <p className="journey-text">
+                    Das Spacebike wurde entwickelt, um eine natürliche Erweiterung des Astronauten zu sein.
+                    Durch fortschrittliche Schnittstellen und intuitive Bedienung verschmelzen Mensch und Maschine
+                    zu einer Einheit. Die Integration mit bestehenden Raumfahrtsystemen ist nahtlos und
+                    ermöglicht es, das volle Potenzial der Weltraumerkundung auszuschöpfen.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-      </section>
-
-      {/* Call to Action */}
-      <section style={{
-        backgroundColor: '#f8f8f8',
-        padding: '6rem 2rem',
-        textAlign: 'center'
-      }}>
-        <div className="container mx-auto max-w-3xl">
-          <h2 style={{
-            fontSize: '2.5rem',
-            fontWeight: '300',
-            fontFamily: 'var(--font-display)',
-            color: '#1a1a1a',
-            marginBottom: '2rem'
-          }}>
-            Bereit für die Zukunft?
-          </h2>
-          <p style={{
-            fontSize: '1.1rem',
-            color: '#666',
-            lineHeight: '1.6',
-            marginBottom: '3rem'
-          }}>
-            Entdecke, wie das Spacebike die Art verändert, wie wir den Weltraum erkunden.
-            Starte deine eigene Journey in die Zukunft der Mobilität.
-          </p>
-          <div style={{
-            display: 'flex',
-            gap: '1.5rem',
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
-            <a
-              href="/journey"
-              style={{
-                backgroundColor: '#1a1a1a',
-                color: '#ffffff',
-                padding: '1rem 2.5rem',
-                borderRadius: '50px',
-                textDecoration: 'none',
-                fontWeight: '500',
-                transition: 'all 0.3s ease',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#333';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#1a1a1a';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Journey starten
-            </a>
-            <a
-              href="/history"
-              style={{
-                backgroundColor: 'transparent',
-                color: '#1a1a1a',
-                padding: '1rem 2.5rem',
-                borderRadius: '50px',
-                textDecoration: 'none',
-                fontWeight: '500',
-                border: '2px solid #ddd',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#1a1a1a';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#ddd';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              Entwicklungsgeschichte
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+      </div>
     </main>
   );
 }
