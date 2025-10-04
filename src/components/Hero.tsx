@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/images/earth.webp"
-            alt="Earth from space - representing the future of space travel"
+            alt="Earth - representing the world of possibilities for bike travel"
             fill
             sizes="100vw"
             className="object-cover object-center"
@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <h1 className="hero-text">
               <span className="hero-gradient hero-floating">
-                Space the World
+                Bike the World
               </span>
             </h1>
           </div>

@@ -18,14 +18,14 @@ const visionEvents: TimelineEvent[] = [
   {
     id: "inception",
     year: "2016",
-    title: "Die Vision entsteht",
-    subtitle: "Der Traum vom Spacebike",
-    description: "Alles begann mit einer verrückten Idee: Was wäre, wenn man ein Fahrrad für den Weltraum entwickeln könnte?",
+    title: "Bernis Vision entsteht",
+    subtitle: "Der Traum von der ultimativen Weltreise",
+    description: "Alles begann mit Bernis verrückter Idee: Was wäre, wenn man mit einem einzigen Fahrrad die ganze Welt bereisen könnte - autark und vollständig ausgestattet?",
     details: [
-      "Erste Skizzen auf einer Serviette in einem Café",
-      "Inspiration durch die NASA Mars-Missionen",
-      "Gründung des Entwicklungsteams",
-      "Suche nach Investoren und Partnern"
+      "Erste Skizzen auf einer Serviette in einem Café in Berlin",
+      "Inspiration durch eigene Radreisen in Europa",
+      "Vision: Ein Bike als komplettes mobiles Zuhause",
+      "Suche nach Gleichgesinnten und ersten Unterstützern"
     ],
     achievements: [
       "Konzeptentwicklung",
@@ -38,18 +38,18 @@ const visionEvents: TimelineEvent[] = [
     id: "research",
     year: "2017",
     title: "Forschung & Entwicklung",
-    subtitle: "Die Wissenschaft dahinter",
-    description: "Intensive Forschungsphase zu Weltraumbedingungen und Materialwissenschaften.",
+    subtitle: "Die Technik hinter der Vision",
+    description: "Intensive Forschungsphase zu Materialwissenschaften, Mechanik und den Bedürfnissen von Langstrecken-Radreisenden.",
     details: [
-      "Partnerschaften mit Universitäten",
-      "Tests in Schwerelosigkeitssimulationen",
-      "Entwicklung spezieller Materialien",
-      "Erste Prototyp-Komponenten"
+      "Partnerschaften mit Hochschulen für Ingenieurswesen",
+      "Tests mit erfahrenen Weltradlern",
+      "Entwicklung modularer Systeme",
+      "Erste Prototyp-Komponenten für Tisch und Bett"
     ],
     achievements: [
       "Materialforschung",
-      "Physikalische Grundlagen",
-      "Erste Tests"
+      "Mechanische Grundlagen",
+      "Erste funktionsfähige Module"
     ]
   }
 ];
@@ -60,16 +60,16 @@ const buildEvents: TimelineEvent[] = [
     year: "2018",
     title: "Erster Prototyp",
     subtitle: "Spacebike Alpha",
-    description: "Der erste funktionsfähige Prototyp wird gebaut und getestet.",
+    description: "Der erste funktionsfähige Prototyp wird gebaut und auf einer 2000km Testfahrt durch Europa erprobt.",
     details: [
-      "Bau des Alpha-Prototyps",
-      "Tests in der Vakuumkammer",
-      "Erste erfolgreiche Fahrversuche",
-      "Identifikation von Verbesserungspotential"
+      "Bau des Alpha-Prototyps in der Werkstatt in München",
+      "Tests auf verschiedenen Untergründen",
+      "Erste erfolgreiche Testfahrt: München-Rom",
+      "Identifikation von Verbesserungspotential bei Modulwechsel"
     ],
     achievements: [
       "Funktionsfähiger Prototyp",
-      "Erfolgreiche Tests",
+      "2000km Testfahrt",
       "Proof of Concept"
     ],
     featured: true
@@ -79,15 +79,15 @@ const buildEvents: TimelineEvent[] = [
     year: "2019",
     title: "Herausforderungen",
     subtitle: "Rückschläge & Learnings",
-    description: "Nicht alles lief nach Plan. Wichtige Lektionen wurden gelernt.",
+    description: "Nicht alles lief nach Plan. Wichtige Lektionen aus der Praxis wurden gelernt.",
     details: [
-      "Materialversagen bei extremen Temperaturen",
-      "Antriebsprobleme in der Schwerelosigkeit",
+      "Materialversagen bei extremer Hitze in Südspanien",
+      "Probleme beim schnellen Modulwechsel",
       "Zurück zum Reißbrett",
-      "Neue Ansätze entwickelt"
+      "Interviews mit 200+ Langstrecken-Radfahrern"
     ],
     achievements: [
-      "Wertvolle Erkenntnisse",
+      "Wertvolle Praxiserkenntnisse",
       "Verbessertes Design",
       "Stärkeres Team"
     ]
@@ -97,17 +97,17 @@ const buildEvents: TimelineEvent[] = [
     year: "2020",
     title: "Der Durchbruch",
     subtitle: "Innovative Lösung",
-    description: "Die entscheidende Innovation: Das magnetische Antriebssystem wird entwickelt.",
+    description: "Die entscheidende Innovation: Das patentierte Schnellverbindungssystem wird entwickelt.",
     details: [
-      "Entwicklung des Magneto-Drive Systems",
-      "Revolutionäres Stabilisierungssystem",
-      "Tests mit NASA-Partnern",
-      "Patent-Anmeldungen"
+      "Entwicklung des Quick-Connect Systems",
+      "Revolutionäres Modul-Wechselsystem",
+      "Tests mit Extremsportlern",
+      "Patent-Anmeldungen eingereicht"
     ],
     achievements: [
       "Technischer Durchbruch",
       "Patent erhalten",
-      "NASA-Kooperation"
+      "Extremsport-Kooperationen"
     ],
     featured: true
   },
@@ -116,15 +116,15 @@ const buildEvents: TimelineEvent[] = [
     year: "2021",
     title: "Zweiter Prototyp",
     subtitle: "Spacebike Beta",
-    description: "Mit den neuen Erkenntnissen wird der Beta-Prototyp entwickelt.",
+    description: "Mit den neuen Erkenntnissen wird der Beta-Prototyp entwickelt und auf Transozeantour getestet.",
     details: [
       "Integration aller neuen Technologien",
-      "Umfangreiche Weltraumsimulationen",
-      "Erste Tests mit Astronauten",
+      "Umfangreiche Langzeittests",
+      "Erste Tests auf 6-monatiger Afrika-Tour",
       "Medienaufmerksamkeit weltweit"
     ],
     achievements: [
-      "Erfolgreiche Astronauten-Tests",
+      "Erfolgreiche 6-Monats-Tour",
       "Internationale Anerkennung",
       "Mediale Aufmerksamkeit"
     ]
@@ -137,12 +137,12 @@ const experienceEvents: TimelineEvent[] = [
     year: "2022",
     title: "Perfektion",
     subtitle: "Feinschliff & Details",
-    description: "Das finale Jahr der Entwicklung mit letzten Verbesserungen.",
+    description: "Das finale Jahr der Entwicklung mit letzten Verbesserungen und Vorbereitung der Serienfertigung.",
     details: [
-      "Optimierung aller Systeme",
-      "Sicherheitstests abgeschlossen",
-      "Produktionsvorbereitungen",
-      "Zertifizierungsprozesse"
+      "Optimierung aller Modulsysteme",
+      "Langzeittests über 50.000km abgeschlossen",
+      "Produktionspartner gefunden",
+      "CE-Zertifizierung erhalten"
     ],
     achievements: [
       "Alle Tests bestanden",
@@ -155,17 +155,17 @@ const experienceEvents: TimelineEvent[] = [
     year: "2023",
     title: "Fertigstellung",
     subtitle: "Spacebike Gamma - Mission Complete",
-    description: "Das dritte und finale Spacebike ist fertig. Der Traum wird Realität.",
+    description: "Das dritte und finale Spacebike ist fertig. Bernis Traum wird Realität.",
     details: [
       "Fertigstellung des Gamma-Modells",
-      "Erste kommerzielle Produktion",
-      "Auslieferung an Raumfahrtbehörden",
-      "Beginn einer neuen Ära"
+      "Erste kommerzielle Produktion gestartet",
+      "Auslieferung an Abenteurer weltweit",
+      "Beginn einer neuen Ära des Radreisens"
     ],
     achievements: [
       "Produktionsstart",
-      "Erste Auslieferungen",
-      "Mission erfüllt"
+      "100 erste Bikes ausgeliefert",
+      "Bernis Vision verwirklicht"
     ],
     featured: true
   }
