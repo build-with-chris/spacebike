@@ -63,10 +63,25 @@ body {
   font-family: var(--font-body);
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* Dark mode starry background */
@@ -437,8 +452,14 @@ html {
 
 .journey-continents {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .journey-continents {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }
 
 .journey-continent-card {
@@ -606,14 +627,58 @@ html {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+
+  /* Override auto margins on subtitle and other elements */
+  .journey-subtitle, .journey-title {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Override max-width containers */
+  .max-w-600px, .max-w-800px {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Fix nav circles positioning */
+  .nav-circles-container {
+    padding: 2rem 0.5rem !important;
+    margin: 0 !important;
+  }
+
+  .nav-circles-grid {
+    margin: 0 auto !important;
+    justify-items: center !important;
+  }
+
+  /* Product page mobile spacing for larger mobile screens */
+  .text-center.lg\\:text-left {
+    padding: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .flex.flex-col.lg\\:flex-row.items-center.justify-center {
+    gap: 2rem !important;
+    padding: 2rem 1rem !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
 }
 
 /* Mobile-First Responsive Design */
 @media (max-width: 480px) {
+  /* Critical mobile viewport fixes */
+  * {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
   /* Ultra-mobile: Even smaller padding */
   .container, .px-6, .px-8 {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* Ensure full width usage */
@@ -621,6 +686,46 @@ html {
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Force all sections to stay within viewport */
+  section, div, main {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Product page specific mobile improvements */
+  .text-center.lg\\:text-left {
+    padding: 1rem !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  /* Better spacing for product text elements */
+  .text-4xl.lg\\:text-5xl {
+    font-size: 2.5rem !important;
+    text-align: center !important;
+    padding: 1rem 0.5rem !important;
+    margin: 0 auto !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Product page layout improvements */
+  .flex.flex-col.lg\\:flex-row.items-center.justify-center {
+    gap: 2rem !important;
+    padding: 2rem 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Image container spacing */
+  .relative.flex-shrink-0 {
+    margin: 1rem 0 !important;
+    padding: 0 1rem !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 
   /* Timeline mobile fixes */
@@ -3143,13 +3248,16 @@ html {
   /* Enhanced mobile touch optimization */
   @media (max-width: 480px) {
     .nav-circles-container {
-      padding: 3rem 1rem !important;
+      padding: 2rem 0.5rem !important;
+      margin: 0 !important;
     }
 
     .nav-circles-grid {
       grid-template-columns: 1fr !important;
       gap: 1.5rem !important;
       max-width: 280px !important;
+      margin: 0 auto !important;
+      justify-items: center !important;
     }
 
     .nav-circles-grid > :nth-child(3) {

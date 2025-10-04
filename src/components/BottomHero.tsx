@@ -5,11 +5,9 @@ export default function BottomHero() {
     <div className="relative w-full">
       {/* Full screen bottom hero background - edge to edge */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden w-full"
         style={{
-          height: '70vh',
-          width: '100vw',
-          marginLeft: 'calc(-50vw + 50%)'
+          height: '70vh'
         }}
       >
         {/* Bottom hero background image */}

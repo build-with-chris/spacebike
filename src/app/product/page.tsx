@@ -137,11 +137,9 @@ export default function ProductPage() {
       {/* Hero Section with Unique and Bicycle */}
       <div className="relative w-full">
         <section
-          className="relative overflow-hidden"
+          className="relative overflow-hidden w-full"
           style={{
             height: '70vh',
-            width: '100vw',
-            marginLeft: 'calc(-50vw + 50%)',
             background: 'var(--bg-primary)'
           }}
         >
@@ -180,11 +178,10 @@ export default function ProductPage() {
 
         {/* Cloud fade overlay at bottom of Hero */}
         <div
-          className="cloud-fade absolute pointer-events-none z-[1]"
+          className="cloud-fade absolute pointer-events-none z-[1] w-full"
           style={{
             bottom: '-1px',
-            left: 'calc(-50vw + 50%)',
-            width: '100vw',
+            left: '0',
             height: '128px'
           }}
         ></div>
