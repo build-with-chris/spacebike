@@ -3,24 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --pepe-ink:#161616;
-  --pepe-surface:#1A1A1A;
-  --pepe-white:#fff;
-  --pepe-t80:rgba(255,255,255,.8);
-  --pepe-t64:rgba(255,255,255,.64);
-  --pepe-line:#333;
-  --pepe-line2:#292929;
-  --pepe-gold:#D4A574;
-  --pepe-gold-hover:#E6B887;
-  --pepe-gold-active:#C19A64;
+  /* Typography */
+  --font-display:'Outfit',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+
+  /* Brand colors */
   --brand:#64B5F6;
   --brand-dark:#0D47A1;
   --brand-hover:#E6B887;
   --brand-active:#42A5F5;
-  --font-display:'Outfit',system-ui,sans-serif;
-  --font-body:'Inter',system-ui,sans-serif;
 
-  /* Light theme colors */
+  /* Light theme colors (default) */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --text-primary: #1e293b;
@@ -29,6 +22,18 @@
   --border-color: rgba(0, 0, 0, 0.06);
   --card-bg: #ffffff;
   --nav-bg: #ffffff;
+
+  /* Light mode pepe variables */
+  --pepe-ink: #ffffff;
+  --pepe-surface: #f8fafc;
+  --pepe-white: #1e293b;
+  --pepe-t80: rgba(30, 41, 59, 0.8);
+  --pepe-t64: rgba(30, 41, 59, 0.64);
+  --pepe-line: #e2e8f0;
+  --pepe-line2: #cbd5e1;
+  --pepe-gold: #D4A574;
+  --pepe-gold-hover: #E6B887;
+  --pepe-gold-active: #C19A64;
 }
 
 .dark {
@@ -41,6 +46,15 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --card-bg: #1e293b;
   --nav-bg: #0f172a;
+
+  /* Dark mode pepe variables */
+  --pepe-ink: #161616;
+  --pepe-surface: #1A1A1A;
+  --pepe-white: #fff;
+  --pepe-t80: rgba(255,255,255,.8);
+  --pepe-t64: rgba(255,255,255,.64);
+  --pepe-line: #333;
+  --pepe-line2: #292929;
 }
 
 body {
@@ -1344,7 +1358,7 @@ body {
   .hamburger span {
     width: 100%;
     height: 2px;
-    background: var(--pepe-t80);
+    background: var(--text-primary);
     border-radius: 1px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
@@ -3623,5 +3637,229 @@ body {
     background: rgba(255, 255, 255, 0.05) !important;
     backdrop-filter: blur(10px) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Light Mode Enhancements */
+  :root:not(.dark) .nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  :root:not(.dark) .nav-logo {
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  :root:not(.dark) .nav-link {
+    color: var(--text-secondary);
+  }
+
+  :root:not(.dark) .nav-link:hover,
+  :root:not(.dark) .nav-link-active {
+    color: var(--brand);
+  }
+
+  /* Light mode hamburger menu */
+  :root:not(.dark) .nav-hamburger {
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+  }
+
+  :root:not(.dark) .nav-hamburger:hover {
+    background: var(--bg-secondary);
+    border-color: var(--brand);
+  }
+
+  /* Light mode mobile menu */
+  :root:not(.dark) .nav-mobile {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid var(--border-color) !important;
+  }
+
+  :root:not(.dark) .nav-mobile-link {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  :root:not(.dark) .nav-mobile-link:hover {
+    background: var(--bg-secondary) !important;
+    border-color: var(--brand) !important;
+    color: var(--brand) !important;
+    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.1) !important;
+  }
+
+  :root:not(.dark) .nav-mobile-link-active {
+    background: rgba(100, 181, 246, 0.05) !important;
+    border-color: var(--brand) !important;
+    color: var(--brand) !important;
+  }
+
+  /* Light mode splash circles */
+  :root:not(.dark) .splash-circle {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  :root:not(.dark) .splash-circle-content {
+    background: var(--card-bg);
+  }
+
+  :root:not(.dark) .splash-circle:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--brand);
+  }
+
+  /* Light mode timeline */
+  :root:not(.dark) .timeline-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  :root:not(.dark) .timeline-featured .timeline-content {
+    background: rgba(100, 181, 246, 0.02);
+    border-color: rgba(100, 181, 246, 0.2);
+    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.1);
+  }
+
+  /* Light mode components */
+  :root:not(.dark) .component-image-placeholder {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+  }
+
+  :root:not(.dark) .component-specs {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Light mode journey cards */
+  :root:not(.dark) .journey-vision-card,
+  :root:not(.dark) .journey-connection-card,
+  :root:not(.dark) .journey-goal,
+  :root:not(.dark) .journey-continent-card,
+  :root:not(.dark) .journey-highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Light mode better contrast for buttons */
+  :root:not(.dark) .component-toggle-btn {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  :root:not(.dark) .component-toggle-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  :root:not(.dark) .timeline-expand-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  :root:not(.dark) .timeline-expand-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  /* Light mode nav tabs enhancement */
+  :root:not(.dark) .journey-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  :root:not(.dark) .journey-nav-tab-main {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  :root:not(.dark) .journey-nav-tab-main:hover {
+    background: var(--bg-secondary);
+    border-color: var(--brand);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  :root:not(.dark) .journey-nav-tab-main.journey-nav-tab-active {
+    background: rgba(100, 181, 246, 0.05);
+    border-color: var(--brand);
+    color: var(--brand);
+    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.1);
+  }
+
+  :root:not(.dark) .journey-nav-tab-content h3 {
+    color: inherit;
+  }
+
+  :root:not(.dark) .journey-nav-tab-content p {
+    color: var(--text-muted);
+  }
+
+  /* Light mode hero enhancements */
+  :root:not(.dark) .journey-hero {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  }
+
+  /* Light mode nav circles container */
+  :root:not(.dark) .nav-circles-container {
+    background: transparent;
+  }
+
+  /* Light mode better visual separation */
+  :root:not(.dark) .component-separator {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--border-color) 20%,
+      var(--border-color) 80%,
+      transparent 100%
+    );
+    opacity: 0.7;
+  }
+
+  /* Light mode theme toggle enhancement */
+  :root:not(.dark) .theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Light mode better focus states */
+  :root:not(.dark) button:focus,
+  :root:not(.dark) a:focus {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  /* Light mode better form elements */
+  :root:not(.dark) input,
+  :root:not(.dark) textarea,
+  :root:not(.dark) select {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+
+  :root:not(.dark) input:focus,
+  :root:not(.dark) textarea:focus,
+  :root:not(.dark) select:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
   }
 }
