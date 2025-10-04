@@ -3891,11 +3891,12 @@ html {
     border-color: var(--brand);
   }
 
-  /* Light mode mobile menu */
+  /* Light mode mobile menu - COMPLETE OVERRIDE with highest specificity */
+  html:not(.dark) .nav-mobile,
   :root:not(.dark) .nav-mobile {
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(20px) !important;
-    border-top: 1px solid var(--border-color) !important;
+    border-top: 1px solid #e5e7eb !important;
     z-index: 99999 !important;
     position: fixed !important;
     top: 4rem !important;
@@ -3903,40 +3904,96 @@ html {
     right: 0 !important;
     bottom: 0 !important;
     display: block !important;
+    animation: slideDown 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
-  :root:not(.dark) .nav-mobile-link {
-    background: var(--card-bg) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--text-primary) !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
-  }
-
-  :root:not(.dark) .nav-mobile-link:hover {
-    background: var(--bg-secondary) !important;
-    border-color: var(--brand) !important;
-    color: var(--brand) !important;
-    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.1) !important;
-  }
-
-  :root:not(.dark) .nav-mobile-link-active {
-    background: rgba(100, 181, 246, 0.05) !important;
-    border-color: var(--brand) !important;
-    color: var(--brand) !important;
-  }
-
-  /* Ensure mobile menu links container is visible in light mode */
+  html:not(.dark) .nav-mobile-links,
   :root:not(.dark) .nav-mobile-links {
     background: transparent !important;
-    color: var(--text-primary) !important;
+    color: #1f2937 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 3rem 1.5rem 2rem !important;
+    gap: 0.75rem !important;
+    max-width: 380px !important;
+    margin: 0 auto !important;
+    min-height: calc(100vh - 4rem) !important;
+    justify-content: flex-start !important;
+    animation: fadeInUp 0.5s ease-out 0.1s both !important;
+  }
+
+  html:not(.dark) .nav-mobile-link,
+  :root:not(.dark) .nav-mobile-link {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    color: #1f2937 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    border-radius: 1rem !important;
+    text-decoration: none !important;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  html:not(.dark) .nav-mobile-link:hover,
+  :root:not(.dark) .nav-mobile-link:hover {
+    background: #f9fafb !important;
+    border-color: #64b5f6 !important;
+    color: #64b5f6 !important;
+    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.15) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  html:not(.dark) .nav-mobile-link-active,
+  :root:not(.dark) .nav-mobile-link-active {
+    background: rgba(100, 181, 246, 0.08) !important;
+    border-color: #64b5f6 !important;
+    color: #64b5f6 !important;
+    box-shadow: 0 4px 20px rgba(100, 181, 246, 0.2) !important;
   }
 
   /* Light mode mobile theme toggle */
+  html:not(.dark) .nav-mobile-theme,
   :root:not(.dark) .nav-mobile-theme {
     background: transparent !important;
-    border-top: 1px solid var(--border-color) !important;
+    border-top: 1px solid #e5e7eb !important;
     padding-top: 1rem !important;
     margin-top: 1rem !important;
+  }
+
+  /* ULTIMATE FALLBACK: Force light mode mobile menu visibility with maximum specificity */
+  body:not(.dark-mode) .nav-mobile,
+  html:not([class*="dark"]) .nav-mobile,
+  html .nav-mobile:not(.dark-theme) {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-top: 1px solid #e5e7eb !important;
+  }
+
+  body:not(.dark-mode) .nav-mobile-link,
+  html:not([class*="dark"]) .nav-mobile-link,
+  html .nav-mobile-link:not(.dark-theme) {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    color: #1f2937 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Additional media query approach for light mode detection */
+  @media (prefers-color-scheme: light) {
+    html:not(.dark) .nav-mobile {
+      background: rgba(255, 255, 255, 0.98) !important;
+    }
+
+    html:not(.dark) .nav-mobile-link {
+      background: #ffffff !important;
+      color: #1f2937 !important;
+      border: 1px solid #e5e7eb !important;
+    }
   }
 
   /* Light mode splash circles */
