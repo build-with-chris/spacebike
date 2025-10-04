@@ -3893,9 +3893,16 @@ html {
 
   /* Light mode mobile menu */
   :root:not(.dark) .nav-mobile {
-    background: rgba(255, 255, 255, 0.98) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(20px) !important;
     border-top: 1px solid var(--border-color) !important;
+    z-index: 99999 !important;
+    position: fixed !important;
+    top: 4rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: block !important;
   }
 
   :root:not(.dark) .nav-mobile-link {
@@ -3916,6 +3923,20 @@ html {
     background: rgba(100, 181, 246, 0.05) !important;
     border-color: var(--brand) !important;
     color: var(--brand) !important;
+  }
+
+  /* Ensure mobile menu links container is visible in light mode */
+  :root:not(.dark) .nav-mobile-links {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Light mode mobile theme toggle */
+  :root:not(.dark) .nav-mobile-theme {
+    background: transparent !important;
+    border-top: 1px solid var(--border-color) !important;
+    padding-top: 1rem !important;
+    margin-top: 1rem !important;
   }
 
   /* Light mode splash circles */
