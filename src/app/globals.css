@@ -3964,20 +3964,24 @@ html {
     margin-top: 1rem !important;
   }
 
-  /* Light mode splash circles */
+  /* Light mode splash circles - same transparent style as dark mode */
   :root:not(.dark) .splash-circle {
-    background: var(--card-bg);
-    border-color: var(--border-color);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 0, 0, 0.08);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(8px);
   }
 
   :root:not(.dark) .splash-circle-content {
-    background: var(--card-bg);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
   }
 
   :root:not(.dark) .splash-circle:hover {
+    background: rgba(255, 255, 255, 0.12);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    border-color: var(--brand);
+    border-color: rgba(100, 181, 246, 0.3);
+    backdrop-filter: blur(12px);
   }
 
   /* Light mode timeline */
