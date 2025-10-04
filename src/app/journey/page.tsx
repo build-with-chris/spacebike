@@ -3,138 +3,180 @@
 import Navigation from '@/components/Navigation';
 import { useState } from 'react';
 
-interface BlogPost {
+interface TimelineEvent {
   id: string;
+  year: string;
   title: string;
-  location: string;
-  date: string;
-  excerpt: string;
-  imageUrl: string;
-  continent: string;
-  isHighlight?: boolean;
+  subtitle: string;
+  description: string;
+  details?: string[];
+  achievements?: string[];
+  kilometers?: string;
+  nights?: string;
+  featured?: boolean;
 }
 
-interface Continent {
-  name: string;
-  emoji: string;
-  countries: number;
-  distance: string;
-  highlight: string;
-}
-
-const continents: Continent[] = [
+const firstTourEvents: TimelineEvent[] = [
   {
-    name: "Europa",
-    emoji: "🇪🇺",
-    countries: 12,
-    distance: "8.500 km",
-    highlight: "Familie Müller teilte ihr Wohnzimmer mit uns"
+    id: "first-test",
+    year: "2022",
+    title: "Die ersten Testfahrten",
+    subtitle: "Das Spacebike im echten Einsatz",
+    description: "Nach der Fertigstellung des Spacebikes beginnen die ersten echten Testfahrten. Jede Tour bringt neue Erkenntnisse und Verbesserungen.",
+    details: [
+      "Erste Übernachtung mit dem kompletten System",
+      "Test aller Module unter realen Bedingungen",
+      "Feintuning der Auf- und Abbau-Prozesse",
+      "Gewichtsverteilung und Fahrstabilität optimiert"
+    ],
+    achievements: [
+      "System erfolgreich getestet",
+      "Erste Camping-Nacht",
+      "Alle Module funktional",
+      "Praxistauglich bestätigt"
+    ],
+    kilometers: "150",
+    nights: "3",
+    featured: true
   },
   {
-    name: "Afrika",
-    emoji: "🌍",
-    countries: 8,
-    distance: "15.200 km",
-    highlight: "Ahmed reparierte unser Bike und wurde ein Freund"
-  },
-  {
-    name: "Asien",
-    emoji: "🏔️",
-    countries: 15,
-    distance: "22.800 km",
-    highlight: "Großmutter Pemba lehrte uns Geduld"
-  },
-  {
-    name: "Ozeanien",
-    emoji: "🇦🇺",
-    countries: 3,
-    distance: "6.700 km",
-    highlight: "Mit den Aborigines unter Sternen geschlafen"
-  },
-  {
-    name: "Südamerika",
-    emoji: "🏔️",
-    countries: 7,
-    distance: "12.400 km",
-    highlight: "Carlos zeigte uns versteckte Inka-Pfade"
+    id: "local-tours",
+    year: "2022",
+    title: "Lokale Touren",
+    subtitle: "Die Umgebung erkunden",
+    description: "Regelmäßige Wochenendtouren in der Umgebung helfen dabei, das System zu perfektionieren und Vertrauen ins Equipment zu gewinnen.",
+    details: [
+      "Wochenendtouren in Bayern und Österreich",
+      "Verschiedene Wetterbedingungen getestet",
+      "Setup-Zeit kontinuierlich verbessert",
+      "Erste begeisterte Reaktionen von anderen Radfahrern"
+    ],
+    achievements: [
+      "Routine entwickelt",
+      "Wetterresistenz bewiesen",
+      "Community-Aufmerksamkeit",
+      "Selbstvertrauen gestärkt"
+    ],
+    kilometers: "500",
+    nights: "15"
   }
 ];
 
-const highlights: BlogPost[] = [
+const adventureEvents: TimelineEvent[] = [
   {
-    id: "sahara",
-    title: "Durch die endlose Sahara",
-    location: "Marokko",
-    date: "10. April 2024",
-    excerpt: "Sand soweit das Auge reicht. Die Magneto-Wheels bewähren sich perfekt auf dem weichen Untergrund. Temperaturen von über 50°C können dem Spacebike nichts anhaben.",
-    imageUrl: "/images/blog/sahara.jpg",
-    continent: "Afrika",
-    isHighlight: true
+    id: "extended-tours",
+    year: "2023",
+    title: "Erste größere Abenteuer",
+    subtitle: "Das Spacebike zeigt seine Stärken",
+    description: "Mit wachsendem Vertrauen ins System werden die Touren länger und anspruchsvoller. Das Spacebike beweist seine Zuverlässigkeit.",
+    details: [
+      "Erste einwöchige Tour durch die Alpen",
+      "Spontane Routenänderungen dank Flexibilität",
+      "Begegnungen mit anderen Bikepacking-Enthusiasten",
+      "Das System funktioniert perfekt in der Praxis"
+    ],
+    achievements: [
+      "Längere Distanzen gemeistert",
+      "Flexibilität bewiesen",
+      "Community-Kontakte geknüpft",
+      "Systemzuverlässigkeit bestätigt"
+    ],
+    kilometers: "800",
+    nights: "25",
+    featured: true
   },
   {
-    id: "himalaya",
-    title: "Himalaya - Das Dach der Welt",
-    location: "Nepal",
-    date: "20. Juni 2024",
-    excerpt: "5000 Meter über dem Meeresspiegel. Das Spacebike erreicht neue Dimensionen. Die Smart Cockpit Navigation führt uns sicher durch die gefährlichen Bergpfade.",
-    imageUrl: "/images/blog/himalaya.jpg",
-    continent: "Asien",
-    isHighlight: true
-  },
-  {
-    id: "outback",
-    title: "Australisches Outback",
-    location: "Australien",
-    date: "10. August 2024",
-    excerpt: "Endlose Weiten und extreme Hitze. Das Spacebike trotzt den härtesten Bedingungen unserer Reise. Über 1000 km ohne eine einzige Panne.",
-    imageUrl: "/images/blog/outback.jpg",
-    continent: "Ozeanien",
-    isHighlight: true
+    id: "challenging-conditions",
+    year: "2023",
+    title: "Herausfordernde Bedingungen",
+    subtitle: "Grenzen austesten",
+    description: "Extremwetter, schwieriges Gelände und lange Distanzen - das Spacebike wird in allen erdenklichen Situationen getestet.",
+    details: [
+      "Tour bei Minusgraden und Schnee",
+      "Mehrtägige Regenperioden überstanden",
+      "Steile Berganstiege mit vollem Gepäck",
+      "System auch unter Stress zuverlässig"
+    ],
+    achievements: [
+      "Winterfestigkeit bewiesen",
+      "Wasserdichtigkeit bestätigt",
+      "Bergfestigkeit unter Last",
+      "Stressresistenz validiert"
+    ],
+    kilometers: "600",
+    nights: "20"
   }
 ];
 
-const allBlogPosts: BlogPost[] = [
+const experienceEvents: TimelineEvent[] = [
   {
-    id: "departure",
-    title: "Der Aufbruch - Das Abenteuer beginnt",
-    location: "München, Deutschland",
-    date: "15. März 2024",
-    excerpt: "Nach drei Jahren Entwicklung ist es endlich soweit. Das Spacebike ist bereit für die ultimative Bewährungsprobe - eine Weltreise, die uns durch alle Kontinente führen wird.",
-    imageUrl: "/images/blog/departure.jpg",
-    continent: "Europa"
+    id: "accumulated-experience",
+    year: "2024",
+    title: "Gefestigte Routine",
+    subtitle: "Das System wird zur zweiten Natur",
+    description: "Nach zwei Jahren intensiver Nutzung ist das Spacebike-Setup perfektioniert. Jede Tour läuft wie am Schnürchen.",
+    details: [
+      "Aufbauzeiten auf unter 10 Minuten reduziert",
+      "Intuitive Nutzung aller Komponenten",
+      "Optimale Packlisten für jede Situation",
+      "Das Spacebike wird zum zuverlässigen Partner"
+    ],
+    achievements: [
+      "Perfektion im Handling",
+      "Maximale Effizienz",
+      "Vollständige Integration",
+      "Partnerschaft Mensch-Maschine"
+    ],
+    kilometers: "1200",
+    nights: "35",
+    featured: true
   },
   {
-    id: "alps",
-    title: "Erste Bewährungsprobe in den Alpen",
-    location: "Schweizer Alpen",
-    date: "22. März 2024",
-    excerpt: "Die ersten 500 Kilometer liegen hinter uns. Das Spacebike meistert die Bergpässe mit Leichtigkeit. Die Titan-Carbon Konstruktion zeigt ihre Stärken bei extremen Höhenunterschieden.",
-    imageUrl: "/images/blog/alps.jpg",
-    continent: "Europa"
-  },
-  ...highlights,
-  {
-    id: "tokyo",
-    title: "Neonlichter von Tokyo",
-    location: "Japan",
-    date: "15. Juli 2024",
-    excerpt: "Von den Bergen in die Metropole. Das Spacebike fügt sich nahtlos in das urbane Umfeld ein. Die Suit Integration zeigt ihre Vielseitigkeit in der Großstadt.",
-    imageUrl: "/images/blog/tokyo.jpg",
-    continent: "Asien"
-  },
-  {
-    id: "andes",
-    title: "Durch die Anden",
-    location: "Peru",
-    date: "5. September 2024",
-    excerpt: "Die längste Gebirgskette der Welt fordert uns heraus. Dünne Luft, steile Anstiege und unvorhersehbares Wetter - das Spacebike meistert alles.",
-    imageUrl: "/images/blog/andes.jpg",
-    continent: "Südamerika"
+    id: "current-status",
+    year: "2025",
+    title: "Bereit für große Träume",
+    subtitle: "Die große Reise wartet",
+    description: "Mit über 100 Nächten Erfahrung und tausenden Kilometern ist das System ausgereift. Die Zeit für große Abenteuer ist gekommen.",
+    details: [
+      "Über 100 Übernachtungen erfolgreich absolviert",
+      "Mehrere tausend Kilometer zurückgelegt",
+      "System in allen Situationen bewährt",
+      "Bereit für die große Weltreise"
+    ],
+    achievements: [
+      "Hunderte Nächte erlebt",
+      "Tausende Kilometer gesammelt",
+      "Absolute Zuverlässigkeit",
+      "Weltreise-bereit"
+    ],
+    kilometers: "2500+",
+    nights: "100+",
+    featured: true
   }
 ];
 
 export default function Journey() {
-  const [activeSection, setActiveSection] = useState<'vision' | 'connections' | 'stories'>('vision');
+  const [activeSection, setActiveSection] = useState<'first-tours' | 'adventures' | 'experiences'>('first-tours');
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+
+  const toggleExpanded = (id: string) => {
+    setExpandedItems(prev =>
+      prev.includes(id)
+        ? prev.filter(item => item !== id)
+        : [...prev, id]
+    );
+  };
+
+  const isExpanded = (id: string) => expandedItems.includes(id);
+
+  const getCurrentEvents = () => {
+    switch (activeSection) {
+      case 'first-tours': return firstTourEvents;
+      case 'adventures': return adventureEvents;
+      case 'experiences': return experienceEvents;
+      default: return firstTourEvents;
+    }
+  };
 
   return (
     <main className="min-h-screen" style={{background: 'var(--bg-primary)'}}>
@@ -144,24 +186,24 @@ export default function Journey() {
       <div className="journey-hero">
         <div className="container mx-auto px-6 py-24 text-center">
           <h1 className="journey-title">
-            Eine Reise der <span className="journey-title-highlight">Verbindungen</span>
+Bernis <span className="journey-title-highlight">Touring-Erfahrungen</span>
           </h1>
           <p className="journey-subtitle">
-            Drei Jahre auf dem Spacebike - Menschen begegnen, Kulturen entdecken,
-            Brücken bauen zwischen den Welten
+            Von den ersten Testfahrten bis zu großen Abenteuern -
+            Die echten Erfahrungen mit dem Spacebike seit 2022
           </p>
           <div className="journey-stats">
             <div className="journey-stat">
-              <span className="journey-stat-number">65.600</span>
+              <span className="journey-stat-number">1000+</span>
               <span className="journey-stat-label">Kilometer</span>
             </div>
             <div className="journey-stat">
-              <span className="journey-stat-number">45</span>
-              <span className="journey-stat-label">Länder</span>
+              <span className="journey-stat-number">100+</span>
+              <span className="journey-stat-label">Nächte</span>
             </div>
             <div className="journey-stat">
-              <span className="journey-stat-number">∞</span>
-              <span className="journey-stat-label">Begegnungen</span>
+              <span className="journey-stat-number">3</span>
+              <span className="journey-stat-label">Jahre</span>
             </div>
           </div>
         </div>
@@ -172,33 +214,33 @@ export default function Journey() {
         <div className="container mx-auto px-6">
           <div className="journey-nav-tabs-centered">
             <button
-              onClick={() => setActiveSection('vision')}
-              className={`journey-nav-tab-main ${activeSection === 'vision' ? 'journey-nav-tab-active' : ''}`}
+              onClick={() => setActiveSection('first-tours')}
+              className={`journey-nav-tab-main ${activeSection === 'first-tours' ? 'journey-nav-tab-active' : ''}`}
             >
-              <div className="journey-nav-tab-icon">🌍</div>
+              <div className="journey-nav-tab-icon">🚴</div>
               <div className="journey-nav-tab-content">
-                <h3>Vision</h3>
-                <p>Warum wir reisen</p>
+                <h3>First Tours</h3>
+                <p>2022: Die ersten Fahrten</p>
               </div>
             </button>
             <button
-              onClick={() => setActiveSection('connections')}
-              className={`journey-nav-tab-main ${activeSection === 'connections' ? 'journey-nav-tab-active' : ''}`}
+              onClick={() => setActiveSection('adventures')}
+              className={`journey-nav-tab-main ${activeSection === 'adventures' ? 'journey-nav-tab-active' : ''}`}
             >
-              <div className="journey-nav-tab-icon">🤝</div>
+              <div className="journey-nav-tab-icon">⛰️</div>
               <div className="journey-nav-tab-content">
-                <h3>Verbindungen</h3>
-                <p>Menschen & Kulturen</p>
+                <h3>Adventures</h3>
+                <p>2023: Größere Abenteuer</p>
               </div>
             </button>
             <button
-              onClick={() => setActiveSection('stories')}
-              className={`journey-nav-tab-main ${activeSection === 'stories' ? 'journey-nav-tab-active' : ''}`}
+              onClick={() => setActiveSection('experiences')}
+              className={`journey-nav-tab-main ${activeSection === 'experiences' ? 'journey-nav-tab-active' : ''}`}
             >
-              <div className="journey-nav-tab-icon">📖</div>
+              <div className="journey-nav-tab-icon">🌟</div>
               <div className="journey-nav-tab-content">
-                <h3>Geschichten</h3>
-                <p>Tagebuch der Reise</p>
+                <h3>Experiences</h3>
+                <p>2024-2025: Erfahrungen</p>
               </div>
             </button>
           </div>
@@ -207,180 +249,129 @@ export default function Journey() {
 
       {/* Content Sections */}
       <div className="container mx-auto px-6 pb-20">
+        <div className="journey-section">
+          <div className="max-w-6xl mx-auto">
+            <div className="timeline-container">
+              <div className="timeline-line"></div>
 
-        {/* Vision */}
-        {activeSection === 'vision' && (
-          <div className="journey-section">
-            <div className="max-w-4xl mx-auto">
-              <div className="journey-vision-card">
-                <h2 className="journey-section-title">Warum wir reisen</h2>
-                <p className="journey-text">
-                  Diese Reise geht weit über Technologie hinaus. Mit dem Spacebike wollen wir
-                  zeigen, dass wahre Innovation dort entsteht, wo Menschen aufeinandertreffen -
-                  an Marktplätzen in Marrakesch, in Teehäusern in Nepal, bei Straßenhändlern in Tokyo.
-                </p>
-              </div>
+              {getCurrentEvents().map((event, index) => (
+                <div
+                  key={event.id}
+                  className={`timeline-item ${event.featured ? 'timeline-featured' : ''}`}
+                >
+                  <div className="timeline-dot"></div>
 
-              <div className="journey-vision-card">
-                <h2 className="journey-section-title">Mehr als eine Reise</h2>
-                <p className="journey-text">
-                  Jeder Kilometer erzählt eine Geschichte. Jede Begegnung verändert uns.
-                  Wir reisen nicht um anzukommen, sondern um zu verstehen - andere Kulturen,
-                  andere Denkweisen, andere Träume. Das Spacebike ist dabei unser stiller Begleiter.
-                </p>
-              </div>
-
-              <div className="journey-mission-goals">
-                <h3 className="text-2xl font-light text-gray-800 mb-8 text-center">Was uns antreibt</h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="journey-goal">
-                    <div className="journey-goal-icon">👥</div>
-                    <h4 className="journey-goal-title">Begegnungen</h4>
-                    <p className="journey-goal-text">
-                      Menschen aus aller Welt kennenlernen und ihre Geschichten teilen
-                    </p>
-                  </div>
-                  <div className="journey-goal">
-                    <div className="journey-goal-icon">🌅</div>
-                    <h4 className="journey-goal-title">Entdecken</h4>
-                    <p className="journey-goal-text">
-                      Verborgene Orte finden, die noch kein Reiseführer beschreibt
-                    </p>
-                  </div>
-                  <div className="journey-goal">
-                    <div className="journey-goal-icon">💝</div>
-                    <h4 className="journey-goal-title">Verbinden</h4>
-                    <p className="journey-goal-text">
-                      Brücken bauen zwischen Kulturen und Welten
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Verbindungen */}
-        {activeSection === 'connections' && (
-          <div className="journey-section">
-            <h2 className="journey-section-title text-center mb-12">Menschen & Kulturen</h2>
-
-            <div className="max-w-6xl mx-auto mb-16">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="journey-connection-text">
-                  <h3 className="text-2xl font-light text-gray-800 mb-6">Über Grenzen hinweg</h3>
-                  <p className="journey-text mb-6">
-                    In jedem Land haben uns Menschen ihre Türen geöffnet. Ein Mechaniker in
-                    Marrakesch reparierte unser Spacebike und lud uns zum Tee ein. Eine Großmutter
-                    in Nepal teilte ihr Abendessen mit uns und erzählte von den Bergen ihrer Kindheit.
-                  </p>
-                  <p className="journey-text">
-                    Diese Begegnungen sind der wahre Reichtum unserer Journey. Technologie verbindet
-                    uns digital - aber echte Verbindungen entstehen beim gemeinsamen Lachen,
-                    beim Teilen von Geschichten, beim Überbrücken der Sprachbarriere mit Händen und Herz.
-                  </p>
-                </div>
-                <div className="journey-connection-visual">
-                  <div className="journey-connection-card">
-                    <div className="journey-connection-stats">
-                      <div className="journey-connection-stat">
-                        <span className="journey-connection-stat-number">1.247</span>
-                        <span className="journey-connection-stat-label">Begegnungen</span>
-                      </div>
-                      <div className="journey-connection-stat">
-                        <span className="journey-connection-stat-number">89</span>
-                        <span className="journey-connection-stat-label">Sprachen</span>
-                      </div>
-                      <div className="journey-connection-stat">
-                        <span className="journey-connection-stat-number">342</span>
-                        <span className="journey-connection-stat-label">Gemeinsame Mahlzeiten</span>
+                  <div
+                    className={`timeline-content ${isExpanded(event.id) ? 'expanded' : ''}`}
+                    onClick={() => toggleExpanded(event.id)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className="timeline-header">
+                      <div className="timeline-info">
+                        <div className="timeline-date">{event.year}</div>
+                        <h3 className="timeline-title">{event.title}</h3>
+                        <p className="timeline-subtitle">{event.subtitle}</p>
+                        {event.featured && (
+                          <span className="timeline-category">Meilenstein</span>
+                        )}
+                        {(event.kilometers || event.nights) && (
+                          <div className="timeline-stats">
+                            {event.kilometers && (
+                              <span className="timeline-stat">
+                                📏 {event.kilometers} km
+                              </span>
+                            )}
+                            {event.nights && (
+                              <span className="timeline-stat">
+                                🏕️ {event.nights} Nächte
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div className="journey-continents">
-              {continents.map((continent, index) => (
-                <div key={continent.name} className="journey-continent-card">
-                  <div className="journey-continent-header">
-                    <span className="journey-continent-emoji">{continent.emoji}</span>
-                    <h3 className="journey-continent-name">{continent.name}</h3>
-                  </div>
-                  <div className="journey-continent-stats">
-                    <div className="journey-continent-stat">
-                      <span className="journey-continent-stat-number">{continent.countries}</span>
-                      <span className="journey-continent-stat-label">Länder</span>
-                    </div>
-                    <div className="journey-continent-stat">
-                      <span className="journey-continent-stat-number">{continent.distance}</span>
-                      <span className="journey-continent-stat-label">Strecke</span>
-                    </div>
-                  </div>
-                  <div className="journey-continent-highlight">
-                    <span className="journey-continent-highlight-label">Besondere Begegnung:</span>
-                    <span className="journey-continent-highlight-text">{continent.highlight}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+                    <p className="timeline-description">
+                      {event.description}
+                    </p>
 
-        {/* Geschichten */}
-        {activeSection === 'stories' && (
-          <div className="journey-section">
-            <h2 className="journey-section-title text-center mb-12">Tagebuch der Reise</h2>
+                    {!isExpanded(event.id) && (
+                      <button className="timeline-expand-btn">
+                        Mehr erfahren ↓
+                      </button>
+                    )}
 
-            <div className="max-w-4xl mx-auto mb-16 text-center">
-              <p className="journey-text text-lg">
-                Jeder Tag auf dieser Reise bringt neue Geschichten hervor. Von spontanen Einladungen
-                zum Abendessen bis hin zu unerwarteten Pannen, die zu den schönsten Begegnungen führen -
-                hier sammeln wir die Momente, die unsere Weltreise unvergesslich machen.
-              </p>
-            </div>
+                    {isExpanded(event.id) && (
+                      <div className="timeline-details">
+                        {event.details && (
+                          <div>
+                            <h4 style={{
+                              color: 'var(--text-primary)',
+                              fontWeight: '600',
+                              marginBottom: '1rem',
+                              fontSize: '1.1rem'
+                            }}>
+                              Details & Entwicklungen:
+                            </h4>
+                            <div className="timeline-features">
+                              {event.details.map((detail, idx) => (
+                                <div key={idx} className="timeline-feature">
+                                  <span style={{ color: 'var(--brand)' }}>•</span>
+                                  <span>{detail}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-              {allBlogPosts.map((post) => (
-                <article key={post.id} className="blog-card group cursor-pointer">
-                  <div className="blog-image-container">
-                    <div className="blog-image-placeholder">
-                      <span className="text-gray-400 text-sm">{post.imageUrl}</span>
-                    </div>
-                    <div className="blog-continent-tag">{post.continent}</div>
-                    {post.isHighlight && (
-                      <div className="journey-highlight-badge">⭐ Besondere Geschichte</div>
+                        {event.achievements && (
+                          <div style={{ marginTop: '1.5rem' }}>
+                            <h4 style={{
+                              color: 'var(--text-primary)',
+                              fontWeight: '600',
+                              marginBottom: '1rem',
+                              fontSize: '1.1rem'
+                            }}>
+                              Errungenschaften:
+                            </h4>
+                            <div style={{
+                              display: 'flex',
+                              flexWrap: 'wrap',
+                              gap: '0.5rem'
+                            }}>
+                              {event.achievements.map((achievement, idx) => (
+                                <span
+                                  key={idx}
+                                  style={{
+                                    backgroundColor: 'rgba(100, 181, 246, 0.15)',
+                                    color: 'var(--brand)',
+                                    padding: '0.5rem 1rem',
+                                    borderRadius: '2rem',
+                                    fontSize: '0.875rem',
+                                    fontWeight: '500'
+                                  }}
+                                >
+                                  {achievement}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        <button
+                          className="timeline-expand-btn"
+                          style={{ marginTop: '1rem' }}
+                        >
+                          Weniger anzeigen ↑
+                        </button>
+                      </div>
                     )}
                   </div>
-                  <div className="p-8">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="text-sm text-gray-500 font-medium">{post.date}</span>
-                      <span className="text-sm text-orange-600 font-medium">{post.location}</span>
-                    </div>
-                    <h2 className="text-2xl font-light text-gray-800 mb-4 group-hover:text-orange-600 transition-colors duration-300">
-                      {post.title}
-                    </h2>
-                    <p className="text-gray-600 leading-relaxed line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="mt-6">
-                      <span className="text-orange-600 font-medium text-sm group-hover:text-orange-700 transition-colors duration-300">
-                        Geschichte lesen →
-                      </span>
-                    </div>
-                  </div>
-                </article>
+                </div>
               ))}
             </div>
-
-            <div className="text-center mt-16">
-              <p className="text-gray-500 text-lg">
-                Die Reise geht weiter... Neue Geschichten entstehen jeden Tag.
-              </p>
-            </div>
           </div>
-        )}
+        </div>
       </div>
     </main>
   );

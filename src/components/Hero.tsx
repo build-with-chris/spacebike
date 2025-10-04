@@ -6,11 +6,9 @@ export default function Hero() {
     <div className="relative w-full">
       {/* Full screen Earth background - edge to edge */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden w-full"
         style={{
-          height: '70vh',
-          width: '100vw',
-          marginLeft: 'calc(-50vw + 50%)'
+          height: '70vh'
         }}
       >
         {/* Earth background image */}
@@ -41,11 +39,10 @@ export default function Hero() {
 
       {/* Cloud fade overlay at bottom of Hero */}
       <div
-        className="cloud-fade absolute pointer-events-none z-[1]"
+        className="cloud-fade absolute pointer-events-none z-[1] w-full"
         style={{
           bottom: '-1px',
-          left: 'calc(-50vw + 50%)',
-          width: '100vw',
+          left: '0',
           height: '128px'
         }}
       ></div>
