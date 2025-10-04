@@ -1,0 +1,282 @@
+/* ========================================
+   Spacebike Design Tokens
+   Core design system variables (Light, clean, poetic)
+   ======================================== */
+
+:root {
+  /* ===== Color Palette ===== */
+
+  /* Core Light Tones */
+  --spacebike-white: #FFFFFF;
+  --spacebike-bg: #FAFAFA;      /* page background (soft, not clinical) */
+  --spacebike-surface: #FFFFFF; /* cards, surfaces */
+  --spacebike-ink: #111111;     /* primary text base */
+  --spacebike-ink-2: #161616;   /* deeper headings */
+
+  /* Text Hierarchy (dark on light) */
+  --spacebike-t80: rgba(17, 17, 17, 0.80);
+  --spacebike-t64: rgba(17, 17, 17, 0.64);
+  --spacebike-t48: rgba(17, 17, 17, 0.48);
+  --spacebike-t32: rgba(17, 17, 17, 0.32);
+
+  /* UI Elements */
+  --spacebike-line: #E5E5E5;
+  --spacebike-line2: #ECECEC;
+  --spacebike-line-light: #F2F2F2;
+
+  /* Accent Colors — matte Colorsplash (no neon) */
+  --splash-1: #6B5BFF;         /* soft violet */
+  --splash-1-hover: #7C6DFF;
+  --splash-1-active: #5B4DE0;
+
+  --splash-2: #00C9A7;         /* aqua green */
+  --splash-2-hover: #12D5B3;
+  --splash-2-active: #00AF92;
+
+  --splash-3: #FF7A59;         /* coral */
+  --splash-3-hover: #FF8D73;
+  --splash-3-active: #E96549;
+
+  --splash-4: #FFD166;         /* soft gold/yellow */
+  --splash-4-hover: #FFDC88;
+  --splash-4-active: #E9BE58;
+
+  /* Splash glows (subtle, matte) */
+  --splash-glow-weak: rgba(0, 0, 0, 0.06);
+  --splash-glow: rgba(0, 0, 0, 0.08);
+
+  /* Semantic Colors (soft) */
+  --spacebike-success: #12B886;
+  --spacebike-success-bg: rgba(18, 184, 134, 0.10);
+  --spacebike-warning: #FFB703;
+  --spacebike-warning-bg: rgba(255, 183, 3, 0.10);
+  --spacebike-error: #E63946;
+  --spacebike-error-bg: rgba(230, 57, 70, 0.10);
+  --spacebike-info: #1E88E5;
+  --spacebike-info-bg: rgba(30, 136, 229, 0.10);
+
+  /* ===== Typography ===== */
+
+  /* Font Families */
+  --font-display: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', 'Monaco', monospace;
+
+  /* Font Sizes - Fluid Typography */
+  --text-xs: 0.75rem;                              /* 12px */
+  --text-sm: 0.875rem;                             /* 14px */
+  --text-base: 1rem;                               /* 16px */
+  --text-lg: 1.125rem;                             /* 18px */
+  --text-xl: 1.25rem;                              /* 20px */
+  --text-2xl: clamp(1.5rem, 3vw, 1.75rem);         /* 24–28px */
+  --text-3xl: clamp(1.75rem, 4vw, 2.25rem);        /* 28–36px */
+  --text-4xl: clamp(2.25rem, 5vw, 3rem);           /* 36–48px */
+  --text-5xl: clamp(3rem, 6vw, 3.75rem);           /* 48–60px */
+  --text-6xl: clamp(3.75rem, 8vw, 4.5rem);         /* 60–72px */
+  --text-7xl: clamp(4.5rem, 10vw, 6rem);           /* 72–96px */
+
+  /* Font Weights */
+  --font-thin: 100;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+  --leading-loose: 1.75;
+  --leading-extra: 2;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.04em;
+  --tracking-widest: 0.08em;
+
+  /* ===== Spacing Scale (curated) ===== */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.125rem;   /* 2px */
+  --space-1: 0.25rem;      /* 4px */
+  --space-1-5: 0.375rem;   /* 6px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-2-5: 0.625rem;   /* 10px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.25rem;      /* 20px */
+  --space-6: 1.5rem;       /* 24px */
+  --space-8: 2rem;         /* 32px */
+  --space-10: 2.5rem;      /* 40px */
+  --space-12: 3rem;        /* 48px */
+  --space-16: 4rem;        /* 64px */
+  --space-20: 5rem;        /* 80px */
+  --space-24: 6rem;        /* 96px */
+
+  /* ===== Border Radius ===== */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-2xl: 1.25rem;   /* 20px */
+  --radius-3xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+
+  /* ===== Shadows (subtle/matte) ===== */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 18px rgba(0,0,0,0.10);
+  --shadow-xl: 0 16px 28px rgba(0,0,0,0.12);
+  --shadow-2xl: 0 24px 48px rgba(0,0,0,0.14);
+  --shadow-3xl: 0 32px 64px rgba(0,0,0,0.16);
+  --shadow-inner: inset 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-none: none;
+
+  /* Glow Shadows (very soft) */
+  --shadow-glow-sm: 0 0 8px var(--splash-glow-weak);
+  --shadow-glow-md: 0 0 16px var(--splash-glow);
+  --shadow-glow-lg: 0 0 24px var(--splash-glow);
+  --shadow-glow-xl: 0 0 40px var(--splash-glow);
+
+  /* ===== Animation ===== */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+  --duration-slowest: 1000ms;
+
+  /* ===== Z-Index Scale ===== */
+  --z-negative: -1;
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  --z-60: 60;
+  --z-70: 70;
+  --z-80: 80;
+  --z-90: 90;
+  --z-100: 100;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-notification: 1080;
+  --z-max: 2147483647;
+
+  /* ===== Breakpoints ===== */
+  --screen-xs: 475px;
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+  --screen-2xl: 1536px;
+  --screen-3xl: 1920px;
+
+  /* ===== Container Sizes ===== */
+  --container-xs: 475px;
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+  --container-3xl: 1920px;
+  --container-full: 100%;
+
+  /* ===== Aspect Ratios ===== */
+  --aspect-square: 1 / 1;
+  --aspect-video: 16 / 9;
+  --aspect-portrait: 4 / 5;
+  --aspect-landscape: 5 / 4;
+  --aspect-golden: 1.618 / 1;
+
+  /* ===== Backdrop Filters ===== */
+  --backdrop-blur-none: blur(0);
+  --backdrop-blur-sm: blur(4px);
+  --backdrop-blur-md: blur(8px);
+  --backdrop-blur-lg: blur(12px);
+  --backdrop-blur-xl: blur(16px);
+  --backdrop-blur-2xl: blur(24px);
+  --backdrop-blur-3xl: blur(40px);
+
+  /* ===== Gradients ===== */
+  --gradient-light: linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%);
+  --gradient-surface: linear-gradient(180deg, #FFFFFF 0%, #FAFAFA 100%);
+  --gradient-text: linear-gradient(180deg, #111111 0%, rgba(17,17,17,0.8) 100%);
+  --gradient-overlay: linear-gradient(to top, rgba(0,0,0,0.08) 0%, transparent 100%);
+
+  /* Circle splash helpers (CSS-only) */
+  --splash-conic-1: conic-gradient(from 200deg, var(--splash-1), var(--splash-2));
+  --splash-conic-2: conic-gradient(from 160deg, var(--splash-3), var(--splash-4));
+  --splash-radial-1: radial-gradient(60% 60% at 40% 40%, var(--splash-2), transparent 70%);
+  --splash-radial-2: radial-gradient(60% 60% at 60% 60%, var(--splash-4), transparent 70%);
+
+  /* ===== Transitions ===== */
+  --transition-none: none;
+  --transition-all: all var(--duration-normal) var(--ease-in-out);
+  --transition-colors: background-color var(--duration-normal) var(--ease-in-out),
+                       border-color var(--duration-normal) var(--ease-in-out),
+                       color var(--duration-normal) var(--ease-in-out),
+                       fill var(--duration-normal) var(--ease-in-out),
+                       stroke var(--duration-normal) var(--ease-in-out);
+  --transition-opacity: opacity var(--duration-normal) var(--ease-in-out);
+  --transition-shadow: box-shadow var(--duration-normal) var(--ease-in-out);
+  --transition-transform: transform var(--duration-normal) var(--ease-spring);
+}
+
+/* ===== Light/Dark Modes ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* optional future dark variant; keep light as default for now */
+  }
+}
+
+/* ===== Motion Preferences ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --duration-slowest: 0ms;
+  }
+}
+
+/* ===== High Contrast Mode ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --spacebike-line: #CFCFCF;
+    --spacebike-line2: #D9D9D9;
+    --spacebike-t80: rgba(17, 17, 17, 0.95);
+    --spacebike-t64: rgba(17, 17, 17, 0.85);
+  }
+}
+
+/* ===== Helper Classes (optional) ===== */
+.circle-splash-1 { background: var(--splash-conic-1); }
+.circle-splash-2 { background: var(--splash-radial-1); }
+.circle-splash-3 { background: var(--splash-conic-2); }
+.circle-splash-4 { background: var(--splash-radial-2); }
