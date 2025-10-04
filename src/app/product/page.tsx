@@ -146,7 +146,7 @@ export default function ProductPage() {
           {/* Content with bicycle and text */}
           <div className="relative z-10 flex items-center justify-center h-full">
             <div className="container mx-auto px-6 lg:px-8">
-              <div className="flex flex-col items-center justify-center gap-2">
+              <div className="relative flex flex-col items-center justify-center">
 
                 {/* Bicycle Image */}
                 <div className="relative flex-shrink-0">
@@ -158,17 +158,17 @@ export default function ProductPage() {
                     className="object-contain"
                     priority
                   />
-                </div>
 
-                {/* Unique Text - Directly under the bicycle */}
-                <div className="text-center">
-                  <h1 className="text-4xl lg:text-5xl font-light tracking-wide" style={{
-                    color: 'var(--text-primary)',
-                    fontFamily: 'var(--font-display)',
-                    letterSpacing: '0.05em'
-                  }}>
-                    Unique
-                  </h1>
+                  {/* Unique Text - Overlapping the bottom of the bicycle */}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+                    <h1 className="text-4xl lg:text-5xl font-light tracking-wide" style={{
+                      color: 'var(--text-primary)',
+                      fontFamily: 'var(--font-display)',
+                      letterSpacing: '0.05em'
+                    }}>
+                      Unique
+                    </h1>
+                  </div>
                 </div>
 
               </div>
