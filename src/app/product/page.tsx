@@ -149,13 +149,25 @@ export default function ProductPage() {
               <div className="relative flex flex-col items-center justify-center">
 
                 {/* Bicycle Image */}
-                <div className="relative flex-shrink-0">
+                <div className="relative flex-shrink-0" style={{
+                  height: '500px',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
                   <Image
                     src="/images/Complete Freigestellt.png"
                     alt="Spacebike - Unique space bicycle"
                     width={700}
                     height={500}
-                    className="object-contain"
+                    className="object-cover"
+                    style={{
+                      height: '125%',
+                      width: 'auto',
+                      objectPosition: 'center 25%',
+                      transform: 'scale(1.2)'
+                    }}
                     priority
                   />
 
@@ -191,36 +203,57 @@ export default function ProductPage() {
       <div className="journey-nav">
         <div className="container mx-auto px-6">
           <div className="journey-nav-tabs-centered">
-            <button
-              onClick={() => setActiveSection('design')}
-              className={`journey-nav-tab-main ${activeSection === 'design' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">🎨</div>
-              <div className="journey-nav-tab-content">
-                <h3>Design & Engineering</h3>
-                <p>Form trifft Funktion</p>
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveSection('performance')}
-              className={`journey-nav-tab-main ${activeSection === 'performance' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">⚡</div>
-              <div className="journey-nav-tab-content">
-                <h3>Performance & Innovation</h3>
-                <p>Antrieb & Technologie</p>
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveSection('connection')}
-              className={`journey-nav-tab-main ${activeSection === 'connection' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">🔗</div>
-              <div className="journey-nav-tab-content">
-                <h3>Connection & Experience</h3>
-                <p>Integration & Bedienung</p>
-              </div>
-            </button>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('design')}
+                className={`splash-circle splash-variant-1 ${activeSection === 'design' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Design section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">🎨</span>
+                </div>
+                <span className="sr-only">Design</span>
+              </button>
+              <span className="splash-circle-label">Design</span>
+            </div>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('performance')}
+                className={`splash-circle splash-variant-2 ${activeSection === 'performance' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Performance section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">⚡</span>
+                </div>
+                <span className="sr-only">Performance</span>
+              </button>
+              <span className="splash-circle-label">Performance</span>
+            </div>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('connection')}
+                className={`splash-circle splash-variant-3 ${activeSection === 'connection' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Connection section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">🔗</span>
+                </div>
+                <span className="sr-only">Connection</span>
+              </button>
+              <span className="splash-circle-label">Connection</span>
+            </div>
           </div>
         </div>
       </div>

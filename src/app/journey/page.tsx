@@ -213,36 +213,57 @@ Bernis <span className="journey-title-highlight">Touring-Erfahrungen</span>
       <div className="journey-nav">
         <div className="container mx-auto px-6">
           <div className="journey-nav-tabs-centered">
-            <button
-              onClick={() => setActiveSection('first-tours')}
-              className={`journey-nav-tab-main ${activeSection === 'first-tours' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">🚴</div>
-              <div className="journey-nav-tab-content">
-                <h3>First Tours</h3>
-                <p>2022: Die ersten Fahrten</p>
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveSection('adventures')}
-              className={`journey-nav-tab-main ${activeSection === 'adventures' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">⛰️</div>
-              <div className="journey-nav-tab-content">
-                <h3>Adventures</h3>
-                <p>2023: Größere Abenteuer</p>
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveSection('experiences')}
-              className={`journey-nav-tab-main ${activeSection === 'experiences' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">🌟</div>
-              <div className="journey-nav-tab-content">
-                <h3>Experiences</h3>
-                <p>2024-2025: Erfahrungen</p>
-              </div>
-            </button>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('first-tours')}
+                className={`splash-circle splash-variant-1 ${activeSection === 'first-tours' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="First Tours section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">🚴</span>
+                </div>
+                <span className="sr-only">First Tours</span>
+              </button>
+              <span className="splash-circle-label">First Tours</span>
+            </div>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('adventures')}
+                className={`splash-circle splash-variant-2 ${activeSection === 'adventures' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Adventures section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">⛰️</span>
+                </div>
+                <span className="sr-only">Adventures</span>
+              </button>
+              <span className="splash-circle-label">Adventures</span>
+            </div>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('experiences')}
+                className={`splash-circle splash-variant-3 ${activeSection === 'experiences' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Experiences section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">🌟</span>
+                </div>
+                <span className="sr-only">Experiences</span>
+              </button>
+              <span className="splash-circle-label">Experiences</span>
+            </div>
           </div>
         </div>
       </div>

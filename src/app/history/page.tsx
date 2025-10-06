@@ -214,43 +214,82 @@ export default function HistoryPage() {
         </div>
       </div>
 
+      {/* Smooth transition section */}
+      <div style={{
+        background: 'linear-gradient(180deg, transparent 0%, var(--bg-primary) 100%)',
+        height: '4rem',
+        marginTop: '-2rem',
+        position: 'relative',
+        zIndex: 2
+      }}></div>
+
       {/* Navigation Tabs */}
       <div className="journey-nav">
         <div className="container mx-auto px-6">
           <div className="journey-nav-tabs-centered">
-            <button
-              onClick={() => setActiveSection('vision')}
-              className={`journey-nav-tab-main ${activeSection === 'vision' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">💡</div>
-              <div className="journey-nav-tab-content">
-                <h3>The Vision</h3>
-                <p>2020: Die Idee entsteht</p>
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveSection('build')}
-              className={`journey-nav-tab-main ${activeSection === 'build' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">🔧</div>
-              <div className="journey-nav-tab-content">
-                <h3>The Build</h3>
-                <p>2021: Entwicklung & Bau</p>
-              </div>
-            </button>
-            <button
-              onClick={() => setActiveSection('experience')}
-              className={`journey-nav-tab-main ${activeSection === 'experience' ? 'journey-nav-tab-active' : ''}`}
-            >
-              <div className="journey-nav-tab-icon">🚀</div>
-              <div className="journey-nav-tab-content">
-                <h3>The Result</h3>
-                <p>2022: Fertiges Spacebike</p>
-              </div>
-            </button>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('vision')}
+                className={`splash-circle splash-variant-1 ${activeSection === 'vision' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Vision section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">💡</span>
+                </div>
+                <span className="sr-only">Vision</span>
+              </button>
+              <span className="splash-circle-label">Vision</span>
+            </div>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('build')}
+                className={`splash-circle splash-variant-2 ${activeSection === 'build' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Build section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">🔧</span>
+                </div>
+                <span className="sr-only">Build</span>
+              </button>
+              <span className="splash-circle-label">Build</span>
+            </div>
+            <div className="splash-circle-container">
+              <button
+                onClick={() => setActiveSection('experience')}
+                className={`splash-circle splash-variant-3 ${activeSection === 'experience' ? 'splash-circle-active' : ''}`}
+                style={{
+                  width: '140px',
+                  height: '140px'
+                }}
+                aria-label="Result section"
+              >
+                <div className="splash-circle-content">
+                  <span className="splash-circle-icon">🚀</span>
+                </div>
+                <span className="sr-only">Result</span>
+              </button>
+              <span className="splash-circle-label">Result</span>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Smooth transition to content */}
+      <div style={{
+        background: 'linear-gradient(180deg, var(--bg-primary) 0%, transparent 100%)',
+        height: '3rem',
+        marginBottom: '-1.5rem',
+        position: 'relative',
+        zIndex: 2
+      }}></div>
 
       {/* Content Sections */}
       <div className="container mx-auto px-6 pb-20">

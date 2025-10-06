@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 interface NavigationProps {
@@ -10,115 +10,246 @@ interface NavigationProps {
 export default function Navigation({ currentPage = 'home' }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    const newState = !isMenuOpen;
-    setIsMenuOpen(newState);
-
-    // Prevent body scroll when mobile menu is open
-    if (newState) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    document.body.style.overflow = 'unset';
-  };
-
-  // Clean up on unmount
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
-
   return (
-    <nav className="nav">
-      <div className="nav-container">
-        <Link
-          href="/"
-          className="nav-logo"
-          onClick={closeMenu}
+    <nav style={{
+      position: 'sticky',
+      top: 0,
+      zIndex: 1000,
+      background: 'linear-gradient(135deg, #161616 0%, #0F0F0F 50%, #0A0A0A 100%)',
+      borderBottom: '1px solid #333',
+      padding: '1rem 0'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+        {/* Logo */}
+        <Link 
+          href="/" 
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.25rem',
+            fontWeight: '700',
+            color: 'white',
+            textDecoration: 'none'
+          }}
         >
           Spacebike
         </Link>
 
-        <div className="nav-links">
+        {/* Desktop Links */}
+        <div style={{
+          display: 'none',
+          alignItems: 'center',
+          gap: '2rem'
+        }} className="desktop-nav">
           <Link
             href="/"
-            className={`nav-link ${currentPage === 'home' ? 'nav-link-active' : ''}`}
+            style={{
+              color: currentPage === 'home' ? '#64B5F6' : 'rgba(255,255,255,0.8)',
+              textDecoration: 'none',
+              fontWeight: '500'
+            }}
           >
             Home
           </Link>
           <Link
             href="/history"
-            className={`nav-link ${currentPage === 'history' ? 'nav-link-active' : ''}`}
+            style={{
+              color: currentPage === 'history' ? '#64B5F6' : 'rgba(255,255,255,0.8)',
+              textDecoration: 'none',
+              fontWeight: '500'
+            }}
           >
             History
           </Link>
           <Link
             href="/product"
-            className={`nav-link ${currentPage === 'product' ? 'nav-link-active' : ''}`}
+            style={{
+              color: currentPage === 'product' ? '#64B5F6' : 'rgba(255,255,255,0.8)',
+              textDecoration: 'none',
+              fontWeight: '500'
+            }}
           >
             Product
           </Link>
           <Link
             href="/journey"
-            className={`nav-link ${currentPage === 'journey' ? 'nav-link-active' : ''}`}
+            style={{
+              color: currentPage === 'journey' ? '#64B5F6' : 'rgba(255,255,255,0.8)',
+              textDecoration: 'none',
+              fontWeight: '500'
+            }}
           >
             Journey
           </Link>
           <ThemeToggle />
         </div>
 
+        {/* Mobile Menu Button */}
         <button
-          onClick={toggleMenu}
-          className="mobile-menu-button"
-          aria-label="Menu toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            cursor: 'pointer',
+            padding: '0.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+            position: 'relative',
+            zIndex: 100001,
+            borderRadius: '0.5rem',
+            backdropFilter: 'blur(10px)'
+          }}
+          className="mobile-menu-btn"
         >
-          <div className={`hamburger ${isMenuOpen ? 'hamburger-open' : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <span style={{
+            width: '24px',
+            height: '2px',
+            background: 'var(--text-primary)',
+            transition: 'all 0.3s ease',
+            transform: isMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none',
+            position: 'relative',
+            zIndex: 100002
+          }}></span>
+          <span style={{
+            width: '24px',
+            height: '2px',
+            background: 'var(--text-primary)',
+            transition: 'all 0.3s ease',
+            opacity: isMenuOpen ? 0 : 1,
+            position: 'relative',
+            zIndex: 100002
+          }}></span>
+          <span style={{
+            width: '24px',
+            height: '2px',
+            background: 'var(--text-primary)',
+            transition: 'all 0.3s ease',
+            transform: isMenuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none',
+            position: 'relative',
+            zIndex: 100002
+          }}></span>
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="nav-mobile" onClick={closeMenu}>
-          <div className="nav-mobile-links" onClick={(e) => e.stopPropagation()}>
+        <div style={{
+          position: 'fixed',
+          top: '4rem',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.98)',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backdropFilter: 'blur(20px)'
+        }} onClick={() => setIsMenuOpen(false)}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            padding: '2.5rem',
+            maxWidth: '350px',
+            width: '100%',
+            background: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: '1rem',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+          }} onClick={(e) => e.stopPropagation()}>
             <Link
               href="/"
-              className={`nav-mobile-link ${currentPage === 'home' ? 'nav-mobile-link-active' : ''}`}
-              onClick={closeMenu}
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                display: 'block',
+                padding: '1.25rem 2rem',
+                background: currentPage === 'home' ? 'rgba(100, 181, 246, 0.2)' : 'rgba(255, 255, 255, 0.15)',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '0.75rem',
+                textAlign: 'center',
+                fontWeight: '600',
+                fontSize: '1.1rem',
+                border: currentPage === 'home' ? '2px solid rgba(100, 181, 246, 0.5)' : '2px solid rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+              }}
             >
               Home
             </Link>
             <Link
               href="/history"
-              className={`nav-mobile-link ${currentPage === 'history' ? 'nav-mobile-link-active' : ''}`}
-              onClick={closeMenu}
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                display: 'block',
+                padding: '1.25rem 2rem',
+                background: currentPage === 'history' ? 'rgba(100, 181, 246, 0.2)' : 'rgba(255, 255, 255, 0.15)',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '0.75rem',
+                textAlign: 'center',
+                fontWeight: '600',
+                fontSize: '1.1rem',
+                border: currentPage === 'history' ? '2px solid rgba(100, 181, 246, 0.5)' : '2px solid rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+              }}
             >
               History
             </Link>
             <Link
               href="/product"
-              className={`nav-mobile-link ${currentPage === 'product' ? 'nav-mobile-link-active' : ''}`}
-              onClick={closeMenu}
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                display: 'block',
+                padding: '1.25rem 2rem',
+                background: currentPage === 'product' ? 'rgba(100, 181, 246, 0.2)' : 'rgba(255, 255, 255, 0.15)',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '0.75rem',
+                textAlign: 'center',
+                fontWeight: '600',
+                fontSize: '1.1rem',
+                border: currentPage === 'product' ? '2px solid rgba(100, 181, 246, 0.5)' : '2px solid rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+              }}
             >
               Product
             </Link>
             <Link
               href="/journey"
-              className={`nav-mobile-link ${currentPage === 'journey' ? 'nav-mobile-link-active' : ''}`}
-              onClick={closeMenu}
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                display: 'block',
+                padding: '1.25rem 2rem',
+                background: currentPage === 'journey' ? 'rgba(100, 181, 246, 0.2)' : 'rgba(255, 255, 255, 0.15)',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '0.75rem',
+                textAlign: 'center',
+                fontWeight: '600',
+                fontSize: '1.1rem',
+                border: currentPage === 'journey' ? '2px solid rgba(100, 181, 246, 0.5)' : '2px solid rgba(255, 255, 255, 0.3)',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+              }}
             >
               Journey
             </Link>
-            <div className="nav-mobile-theme">
+            <div style={{
+              marginTop: '1rem',
+              display: 'flex',
+              justifyContent: 'center'
+            }}>
               <ThemeToggle />
             </div>
           </div>

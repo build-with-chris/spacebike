@@ -29,7 +29,7 @@ export default function BottomHero() {
       <section
         className="relative overflow-hidden w-full"
         style={{
-          height: '70vh'
+          height: '60vh'
         }}
       >
         {/* Bottom hero background image */}

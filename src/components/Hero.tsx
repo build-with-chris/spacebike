@@ -8,7 +8,7 @@ export default function Hero() {
       <section
         className="relative overflow-hidden w-full"
         style={{
-          height: '70vh'
+          height: '60vh'
         }}
       >
         {/* Earth background image */}

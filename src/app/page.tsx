@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import Navigation from '@/components/Navigation';
 import BottomHero from '@/components/BottomHero';
 import NavCircles from '@/components/NavCircles';
+import SupportSection from '@/components/SupportSection';
 
 export default function Home() {
 
@@ -14,9 +15,35 @@ export default function Home() {
       {/* Hero Section with Earth */}
       <Hero />
 
-      {/* Splash Circle Navigation */}
-      <NavCircles />
+      {/* Smooth transition section */}
+      <div className="hero-to-content-transition" style={{
+        background: 'linear-gradient(180deg, transparent 0%, var(--bg-primary) 100%)',
+        height: '4rem',
+        marginTop: '-2rem',
+        position: 'relative',
+        zIndex: 2
+      }}></div>
 
+      {/* Splash Circle Navigation */}
+      <div style={{
+        padding: '2rem 0 4rem',
+        position: 'relative',
+        zIndex: 3
+      }}>
+        <NavCircles />
+      </div>
+
+      {/* Support Section */}
+      <SupportSection />
+
+      {/* Smooth transition to bottom hero */}
+      <div className="content-to-hero-transition" style={{
+        background: 'linear-gradient(180deg, var(--bg-primary) 0%, transparent 100%)',
+        height: '4rem',
+        marginBottom: '-2rem',
+        position: 'relative',
+        zIndex: 2
+      }}></div>
 
       {/* Bottom Hero Image */}
       <BottomHero />
